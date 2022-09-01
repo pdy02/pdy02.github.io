@@ -1,0 +1,631 @@
+.warp {
+  width: 1200px;
+  margin: 0 auto;
+}
+.clear::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+.bigbg {
+  width: 100%;
+  height: 700px;
+  background-color: #b2b2b2;
+  z-index: -2;
+}
+.bigbg .warp {
+  height: 700px;
+  background-image: url(../img/kid_transparent.png);
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: 650px 30px;
+  padding-top: 30px;
+}
+.bigbg .warp .head {
+  margin-bottom: 30px;
+}
+.bigbg .warp .head .logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 40px;
+}
+.bigbg .warp .head .logo a span {
+  color: red;
+}
+.bigbg .warp .head .info {
+  width: 610px;
+  height: 50px;
+  color: white;
+}
+.bigbg .warp .head .info .site {
+  float: left;
+  line-height: 50px;
+  font-size: 15px;
+}
+.bigbg .warp .head .info .site i {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  color: #fdb62f;
+}
+.bigbg .warp .head .info .site span {
+  display: inline-block;
+  height: 50px;
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 1.2;
+  padding-top: 10px;
+  width: 250px;
+  color: white;
+}
+.bigbg .warp .head .info .time {
+  float: right;
+  line-height: 50px;
+  font-size: 15px;
+}
+.bigbg .warp .head .info .time i {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  color: #fd4d40;
+}
+.bigbg .warp .head .info .time span {
+  display: inline-block;
+  height: 50px;
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 1.2;
+  padding-top: 10px;
+  width: 250px;
+  color: white;
+}
+.bigbg .warp .daoh {
+  background-color: #fff;
+  border-radius: 50px;
+  height: 90px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 100px;
+}
+.bigbg .warp .daoh ul.nav {
+  float: left;
+}
+.bigbg .warp .daoh ul.nav li {
+  line-height: 90px;
+  float: left;
+  margin-right: 30px;
+}
+.bigbg .warp .daoh ul.nav li:first-child a {
+  color: #fd4d40;
+}
+.bigbg .warp .daoh ul.nav li a {
+  text-decoration: none;
+  color: black;
+}
+.bigbg .warp .daoh div.icon {
+  line-height: 90px;
+  float: right;
+}
+.bigbg .warp .daoh div.icon i {
+  margin-left: 50px;
+  cursor: pointer;
+}
+.bigbg .warp .daoh div.icon i:first-child {
+  color: #16c3b0;
+}
+.bigbg .warp .daoh div.icon i:nth-child(2) {
+  color: #71bc42;
+}
+.bigbg .warp .daoh div.icon i:last-child {
+  color: #fdb62f;
+}
+.bigbg .warp > .info {
+  height: 200px;
+  width: 400px;
+}
+.bigbg .warp > .info span {
+  color: #fd4d40;
+  font-family: "Indie Flower", cursive;
+  font-size: 20px;
+}
+.bigbg .warp > .info h2 {
+  font-size: 45px;
+  color: white;
+  font-weight: 700;
+}
+.bigbg .warp > .info p {
+  color: white;
+}
+.bigbg .warp > .info a {
+  display: block;
+  margin-top: 50px;
+  width: 150px;
+  height: 65px;
+  text-align: center;
+  line-height: 65px;
+  background-color: #dc3545;
+  text-decoration: none;
+  color: white;
+  border-radius: 30px 0 30px 0;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+}
+.bigbg .warp > .info a:hover {
+  background-color: #c82333;
+}
+.games .warp {
+  margin-top: 80px;
+}
+.games .warp ul li {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+.games .warp ul li:nth-child(2) .card {
+  background-color: #fdb62f;
+}
+.games .warp ul li:nth-child(2) .card i {
+  background-color: #fdb62f;
+}
+.games .warp ul li:nth-child(3) .card {
+  background-color: #16c3b0;
+}
+.games .warp ul li:nth-child(3) .card i {
+  background-color: #16c3b0;
+}
+.games .warp ul li .card {
+  background-color: #fd4d40;
+  position: relative;
+  padding: 70px 40px 70px 40px;
+  text-align: center;
+}
+.games .warp ul li .card i {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  background-color: #fd4d40;
+  border-radius: 50%;
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  left: calc(50% - 40px);
+  top: -35px;
+}
+.games .warp ul li .card h2 {
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.games .warp ul li .card p {
+  color: rgba(255, 255, 255, 0.7);
+}
+.kids {
+  margin-top: 100px;
+  padding: 100px 0;
+  background-color: #f6f5f5;
+}
+.kids .warp {
+  height: 450px;
+}
+.kids .warp .left {
+  float: left;
+  width: 50%;
+  height: 450px;
+  background-image: url(../img/img_1.jpg);
+}
+.kids .warp .right {
+  width: 42%;
+  height: 450px;
+  float: right;
+  padding-left: 100px;
+}
+.kids .warp .right span {
+  color: #dc3545;
+  font-family: "Indie Flower", cursive;
+  font-size: 20px;
+}
+.kids .warp .right h2 {
+  font-size: 30px;
+  margin: 20px 0;
+}
+.kids .warp .right p {
+  color: #364d59;
+  font-size: 15px;
+  line-height: 30px;
+}
+.kids .warp .right a {
+  text-decoration: none;
+  margin-top: 60px;
+  color: black;
+  text-align: center;
+  line-height: 70px;
+  display: block;
+  width: 200px;
+  height: 70px;
+  background-color: #fdb62f;
+  border-radius: 30px 0 30px 0;
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+.kids .warp .right a:hover {
+  background-color: #e0a800;
+}
+.packages {
+  background-color: #17a2b8;
+  height: 700px;
+  padding: 50px 0;
+}
+.packages .warp .title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.packages .warp .title p {
+  color: #dc3545;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-family: "Indie Flower", cursive;
+}
+.packages .warp .title h2 {
+  color: #fff;
+  font-size: 30px;
+}
+.packages .warp ul li {
+  float: left;
+  padding: 15px;
+  width: 33.33%;
+}
+.packages .warp ul li:nth-child(2) .card h3 {
+  color: #71bc42;
+}
+.packages .warp ul li:nth-child(2) .card a {
+  background-color: #ffc107;
+  color: #000;
+}
+.packages .warp ul li:nth-child(2) .card a:hover {
+  background-color: #e0a800;
+}
+.packages .warp ul li:nth-child(3) .card h3 {
+  color: #dc3545;
+}
+.packages .warp ul li:nth-child(3) .card a {
+  background-color: #71bc42;
+  color: #000;
+}
+.packages .warp ul li:nth-child(3) .card a:hover {
+  background-color: #60a038;
+  color: #fff;
+}
+.packages .warp ul li .card {
+  padding: 30px;
+  padding-bottom: 50px;
+  background-color: #fff;
+  text-align: center;
+  height: 100%;
+  border-radius: 5px;
+}
+.packages .warp ul li .card img {
+  width: 50px;
+  height: 50px;
+}
+.packages .warp ul li .card h3 {
+  color: #16c3b0;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.packages .warp ul li .card p {
+  color: #777;
+}
+.packages .warp ul li .card a {
+  margin: 25px auto 0;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #fd4d40;
+  border-radius: 30px 0 30px 0;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+.packages .warp ul li .card a:hover {
+  background-color: #c82333;
+}
+.pricing {
+  padding: 50px 0;
+  background-color: #fff;
+}
+.pricing .warp .info {
+  float: left;
+  width: 350px;
+  margin-right: 20px;
+}
+.pricing .warp .info span {
+  font-size: 20px;
+  font-family: "Indie Flower", cursive;
+  color: #dc3545;
+}
+.pricing .warp .info h2 {
+  color: #000;
+  font-size: 30px;
+  margin: 20px 0;
+}
+.pricing .warp .info p {
+  color: #777;
+  line-height: 25px;
+}
+.pricing .warp .price1,
+.pricing .warp .price2 {
+  float: left;
+}
+.pricing .warp .price1 div,
+.pricing .warp .price2 div {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #16c3b0;
+  position: relative;
+  margin-bottom: 30px;
+}
+.pricing .warp .price1 div span,
+.pricing .warp .price2 div span {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  display: block;
+  text-align: center;
+  line-height: 80px;
+  font-size: 30px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 5px solid white;
+  background-color: #16c3b0;
+  color: #364d59;
+}
+.pricing .warp .price1 h3,
+.pricing .warp .price2 h3 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+.pricing .warp .price1 ul li,
+.pricing .warp .price2 ul li {
+  line-height: 30px;
+  font-weight: lighter;
+}
+.pricing .warp .price1 ul li i,
+.pricing .warp .price2 ul li i {
+  color: #71bc42;
+  margin-right: 10px;
+}
+.pricing .warp .price1 a,
+.pricing .warp .price2 a {
+  margin-top: 30px;
+  display: block;
+  text-decoration: none;
+  color: #000;
+  width: 120px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  background-color: #16c3b0;
+  border-radius: 30px 0 30px 0;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+.pricing .warp .price2 {
+  margin-left: 150px;
+}
+.pricing .warp .price2 div {
+  background-color: #fd4d40;
+}
+.pricing .warp .price2 div span {
+  background-color: #fd4d40;
+}
+.pricing .warp .price2 ul li i {
+  color: #dc3545;
+}
+.pricing .warp .price2 a {
+  background-color: #fd4d40;
+  color: #fff;
+}
+.testimonial {
+  padding: 100px 0;
+  background-color: #f6f5f5;
+}
+.testimonial .warp .title {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.testimonial .warp .title p {
+  font-size: 20px;
+  font-family: "Indie Flower", cursive;
+  color: #dc3545;
+  margin-bottom: 10px;
+}
+.testimonial .warp .title h2 {
+  color: #000;
+  font-size: 30px;
+}
+.testimonial .warp .card {
+  width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fd4d40;
+  position: relative;
+}
+.testimonial .warp .card ul {
+  width: 60px;
+  position: absolute;
+  right: 25px;
+  top: 40px;
+  margin: 0;
+}
+.testimonial .warp .card ul li {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #fe837a;
+  margin-left: 10px;
+}
+.testimonial .warp .card ul li:nth-child(3) {
+  background-color: #fff;
+}
+.testimonial .warp .card .left {
+  float: left;
+  width: 80px;
+}
+.testimonial .warp .card .right {
+  width: 500px;
+  float: left;
+  padding-left: 50px;
+  color: #fff;
+}
+.testimonial .warp .card .right h3 {
+  font-size: 20px;
+}
+.testimonial .warp .card .right span {
+  display: block;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 20px 0;
+}
+.testimonial .warp .card .right p {
+  line-height: 30px;
+  letter-spacing: 1px;
+}
+.testimonial .warp ul {
+  width: 700px;
+  margin: 50px auto 0;
+}
+.testimonial .warp ul li {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+.testimonial .warp ul li:nth-child(2) p {
+  color: #fdb62f;
+}
+.testimonial .warp ul li:nth-child(3) p {
+  color: #16c3b0;
+}
+.testimonial .warp ul li:nth-child(4) p {
+  color: #dc3545;
+}
+.testimonial .warp ul li p {
+  color: #16c3b0;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.testimonial .warp ul li span {
+  color: rgba(0, 0, 0, 0.804);
+  font-weight: 400;
+}
+section.bring {
+  background-color: #ffc107;
+  padding: 50px 0;
+}
+section.bring .warp .text {
+  width: 400px;
+  float: left;
+  color: #fff;
+  font-size: 30px;
+  line-height: 5  0px;
+}
+section.bring .warp a {
+  float: right;
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #dc3545;
+  border-radius: 30px 0 30px 0;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+section.bring .warp a:hover {
+  background-color: #c82333;
+}
+footer {
+  background-color: #343a40;
+  height: 600px;
+}
+footer .warp {
+  padding: 5  0px 0;
+  padding-top: 100px;
+}
+footer .warp .top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.696);
+  padding-bottom: 100px;
+}
+footer .warp .top .left {
+  width: 350px;
+  margin-right: 200px;
+  float: left;
+}
+footer .warp .top .left h2 {
+  color: #dc3545;
+  margin-bottom: 20px;
+}
+footer .warp .top .left p {
+  color: rgba(255, 255, 255, 0.816);
+  margin-bottom: 30px;
+  line-height: 25px;
+}
+footer .warp .top .left input {
+  width: 250px;
+  height: 50px;
+  border-radius: 5px;
+  padding-left: 10px;
+  border: none;
+  outline: none;
+}
+footer .warp .top .left button {
+  width: 90px;
+  height: 50px;
+  background-color: #fd4d40;
+  color: #fff;
+  border: none;
+  margin-left: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+footer .warp .top .left button:hover {
+  background-color: #c82333;
+}
+footer .warp .top ul {
+  width: 300px;
+  float: left;
+}
+footer .warp .top ul li:nth-child(1) {
+  color: #fd4d40;
+  margin-bottom: 15px;
+}
+footer .warp .top ul li:nth-child(1) ~ li {
+  color: rgba(255, 255, 255, 0.777);
+  line-height: 40px;
+}
+footer .warp .bottom {
+  text-align: center;
+  color: #fff;
+  padding-top: 50px;
+}
+footer .warp .bottom p i {
+  color: #fd4d40;
+}
+/*# sourceMappingURL=./style.css.map */

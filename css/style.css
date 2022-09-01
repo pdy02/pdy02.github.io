@@ -19,21 +19,25 @@ a {
   color: #ffffff;
   text-decoration: none;
 }
-.head {
-  width: 1200px;
-  height: 90px;
+section.nav {
+  width: 100%;
   position: absolute;
   top: 0;
-  left: calc(50% - 600px);
   z-index: 1;
+  transition: all 0.3s;
+}
+section.nav .head {
+  width: 1200px;
+  height: 90px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.head .logo {
+section.nav .head .logo {
   display: flex;
 }
-.head .logo .avatar {
+section.nav .head .logo .avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -43,30 +47,41 @@ a {
   background-size: cover;
   margin-right: 15px;
 }
-.head .logo span {
+section.nav .head .logo span {
   color: #ffffff;
   line-height: 50px;
   font-size: 24px;
 }
-.head ul {
+section.nav .head ul {
   height: 100%;
   display: flex;
   align-items: center;
 }
-.head ul li {
+section.nav .head ul li {
   width: 90px;
   height: 100%;
   line-height: 90px;
 }
-.head ul li a {
+section.nav .head ul li a {
   text-align: center;
   display: block;
   width: 100%;
   height: 100%;
   transition: all 0.3s;
 }
-.head ul li a:hover {
+section.nav .head ul li a:hover {
   background-color: #ffffff36;
+}
+section.nav.active {
+  position: fixed;
+  background-color: #fff;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3);
+}
+section.nav.active .head .logo span {
+  color: #000;
+}
+section.nav.active .head ul li a {
+  color: #000;
 }
 section.banner {
   width: 100%;
@@ -111,34 +126,34 @@ section.tag p {
   line-height: 30px;
   text-indent: 40px;
 }
-section.layout {
+section#layout {
   width: 1200px;
   margin: 50px auto;
   padding: 20px 0;
 }
-section.layout .title {
+section#layout .title {
   padding-left: 20px;
 }
-section.layout .main ul {
+section#layout .main ul {
   display: flex;
 }
-section.layout .main ul li {
+section#layout .main ul li {
   width: 33.33%;
   padding: 20px 20px;
   box-sizing: border-box;
 }
-section.layout .main ul li a.card {
+section#layout .main ul li a.card {
   display: block;
   border-radius: 15px;
   cursor: pointer;
   padding: 30px;
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
 }
-section.layout .main ul li a.card .img {
+section#layout .main ul li a.card .img {
   border-radius: 15px;
   overflow: hidden;
 }
-section.layout .main ul li a.card .img .img-bg {
+section#layout .main ul li a.card .img .img-bg {
   width: 100%;
   height: 160px;
   background-repeat: no-repeat;
@@ -146,20 +161,20 @@ section.layout .main ul li a.card .img .img-bg {
   background-size: cover;
   transition: all 0.3s;
 }
-section.layout .main ul li a.card .info {
+section#layout .main ul li a.card .info {
   text-align: center;
   font-size: 24px;
   color: rgba(0, 0, 0, 0.605);
 }
-section.layout .main ul li a.card:hover .img .img-bg {
+section#layout .main ul li a.card:hover .img .img-bg {
   transform: scale(1.2);
 }
-section.layout .main ul li:nth-child(1) .card .img .img-bg {
+section#layout .main ul li:nth-child(1) .card .img .img-bg {
   background-image: url("../imgs/layout1.png");
 }
-section.layout .main ul li:nth-child(2) .card .img .img-bg {
-  background-image: url("../imgs/1.jpg");
+section#layout .main ul li:nth-child(2) .card .img .img-bg {
+  background-image: url("../imgs/layout2.png");
 }
-section.layout .main ul li:nth-child(3) .card .img .img-bg {
-  background-image: url("../imgs/bg.png");
+section#layout .main ul li:nth-child(3) .card .img .img-bg {
+  background-image: url("../imgs/layout3.png");
 }

@@ -11,30 +11,31 @@
 </head>
 
 <body>
-    <!-- <p>测试</p> -->
-    <div class="head">
-        <div class="logo">
-            <div class="avatar"></div>
-            <span>庞东瑜</span>
+    <section class="nav">
+        <div class="head">
+            <div class="logo">
+                <div class="avatar"></div>
+                <span>庞东瑜</span>
+            </div>
+            <ul>
+                <li>
+                    <a href="#layout"><i class=""></i><span>布局排版</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class=""></i><span>js案例</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class=""></i><span>jQuery</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class=""></i><span>bs使用</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class=""></i><span>h5&c3</span></a>
+                </li>
+            </ul>
         </div>
-        <ul>
-            <li>
-                <a href="#"><i class=""></i><span>布局排版</span></a>
-            </li>
-            <li>
-                <a href="#"><i class=""></i><span>js案例</span></a>
-            </li>
-            <li>
-                <a href="#"><i class=""></i><span>jQuery</span></a>
-            </li>
-            <li>
-                <a href="#"><i class=""></i><span>bs使用</span></a>
-            </li>
-            <li>
-                <a href="#"><i class=""></i><span>h5&c3</span></a>
-            </li>
-        </ul>
-    </div>
+    </section>
     <section class="banner">
         <div class="smile">
             <h1>Smaile Life</h1>
@@ -52,12 +53,12 @@
         </p>
     </section>
 
-    <section class="layout">
+    <section id="layout">
         <h2 class="title">布局排版</h2>
         <div class="main">
             <ul>
                 <li>
-                    <a class="card" href="./layout/demo1/index.html">
+                    <a class="card" href="./layout/demo1">
                         <div class="img">
                             <!-- <img src="./imgs/bg.png" alt=""> -->
                             <div class="img-bg"></div>
@@ -68,7 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="card">
+                    <a class="card" href="./layout/demo2">
                         <div class="img">
                             <div class="img-bg"></div>
                         </div>
@@ -78,10 +79,9 @@
                     </a>
                 </li>
                 <li>
-                    <a class="card">
+                    <a class="card" href="./layout/demo3">
                         <div class="img">
                             <div class="img-bg"></div>
-
                         </div>
                         <div class="info">
                             整形网站
@@ -91,6 +91,8 @@
             </ul>
         </div>
     </section>
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/home.js"></script>
 </body>
 
 </html>
