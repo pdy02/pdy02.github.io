@@ -1,0 +1,678 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+div.bar {
+  background-color: #0c5d69;
+  padding: 15px 0;
+}
+div.bar .warpper {
+  width: 1000px;
+  margin: 0 auto;
+  color: #ffffff;
+  overflow: hidden;
+  height: 20px;
+}
+div.bar .warpper ul.contact {
+  overflow: hidden;
+  width: 700px;
+  float: left;
+  font-size: 13px;
+  line-height: 20px;
+}
+div.bar .warpper ul.contact li {
+  float: left;
+  margin-right: 20px;
+  line-height: 20px;
+}
+div.bar .warpper ul.contact li i {
+  margin-right: 5px;
+  font-size: 18px;
+}
+div.bar .warpper div.icons {
+  width: 300px;
+  float: right;
+  text-align: end;
+  letter-spacing: 10px;
+}
+div.bar .warpper div.icons i {
+  cursor: pointer;
+}
+header {
+  padding: 30px 0;
+}
+header .warpper {
+  width: 1000px;
+  margin: 0 auto;
+  text-transform: uppercase;
+}
+header .warpper .logo {
+  font-size: 28px;
+  font-weight: bold;
+  float: left;
+  vertical-align: middle;
+}
+header .warpper > ul {
+  float: left;
+  padding-top: 10px;
+  margin-left: 150px;
+  font-size: 13px;
+}
+header .warpper > ul > li {
+  float: left;
+  margin-right: 30px;
+  vertical-align: middle;
+  font-weight: 600;
+  padding-bottom: 5px;
+  position: relative;
+}
+header .warpper > ul > li:first-child {
+  border-bottom: 2px solid #13a2b7;
+}
+header .warpper > ul > li a {
+  vertical-align: middle;
+  color: black;
+  text-decoration: none;
+}
+header .warpper > ul > li:hover {
+  border-bottom: 2px solid #13a2b7;
+}
+header .warpper > ul > li:hover ul.sub-menu {
+  opacity: 1;
+}
+header .warpper > ul > li > ul.sub-menu {
+  background-color: black;
+  color: white;
+  width: 200px;
+  padding: 10px 20px;
+  line-height: 30px;
+  position: absolute;
+  top: 28px;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+header .warpper > ul > li > ul.sub-menu li {
+  cursor: pointer;
+}
+header .warpper button {
+  float: right;
+  background-color: transparent;
+  border: 2px solid #13a2b7;
+  border-radius: 5px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 600;
+  cursor: pointer;
+}
+div.banner {
+  background-image: url(../imgs/hero-bg.jpg);
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 160px 0;
+}
+div.banner div.ban-info {
+  width: 1000px;
+  margin: 0 auto;
+}
+div.banner div.ban-info .txt {
+  width: 500px;
+}
+div.banner div.ban-info .txt p {
+  text-transform: uppercase;
+  color: #13a2b7;
+  font-size: 15px;
+}
+div.banner div.ban-info .txt h3 {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+div.banner div.ban-info .txt button {
+  background-color: #13a2b7;
+  width: 200px;
+  height: 50px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+section.aesthtic {
+  padding: 80px 0;
+}
+section.aesthtic .warpper {
+  position: relative;
+  width: 1000px;
+  margin: 0 auto;
+  height: 300px;
+}
+section.aesthtic .warpper form {
+  padding: 30px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+  width: 330px;
+  position: absolute;
+  left: 0;
+  top: -150px;
+  background-color: #fff;
+}
+section.aesthtic .warpper form p {
+  color: gray;
+}
+section.aesthtic .warpper form h3 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+section.aesthtic .warpper form input {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+section.aesthtic .warpper form select {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+section.aesthtic .warpper form button {
+  width: 100%;
+  height: 50px;
+  background-color: #13a2b7;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 5px;
+}
+section.aesthtic .warpper .info {
+  width: 650px;
+  float: right;
+}
+section.aesthtic .warpper .info .title {
+  float: left;
+  width: 350px;
+}
+section.aesthtic .warpper .info .title span {
+  color: gray;
+  letter-spacing: 2px;
+}
+section.aesthtic .warpper .info .title h3 {
+  font-size: 35px;
+  font-weight: 700;
+  color: #323232;
+}
+section.aesthtic .warpper .info .title h3 span {
+  color: #13a2b7;
+}
+section.aesthtic .warpper .info .video {
+  width: 300px;
+  height: 300px;
+  background-image: url(../imgs/video.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: right;
+}
+div.offer .warpper {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+div.offer .warpper .title {
+  text-align: center;
+  padding: 30px 0;
+}
+div.offer .warpper .title .sub-title {
+  font-size: 12px;
+  color: gray;
+}
+div.offer .warpper .title .main-title {
+  font-size: 35px;
+  font-weight: 700;
+}
+div.offer .warpper .content {
+  width: 100%;
+  overflow: hidden;
+}
+div.offer .warpper .content .card {
+  width: 250px;
+  text-align: center;
+  float: left;
+  padding: 20px;
+}
+div.offer .warpper .content .card h4 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+div.offer .warpper .content .card p {
+  font-size: 15px;
+  color: gray;
+}
+div.services {
+  background-image: url(../services-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 50px;
+}
+div.services .warpper {
+  width: 1000px;
+  margin: 0 auto;
+}
+div.services .warpper .header {
+  overflow: hidden;
+}
+div.services .warpper .header .title {
+  float: left;
+}
+div.services .warpper .header .title h3 {
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+}
+div.services .warpper .header .title p {
+  color: #13a2b7;
+}
+div.services .warpper .header .btn {
+  float: right;
+  color: white;
+  background-color: transparent;
+  border: 2px solid #13a2b7;
+  border-radius: 5px;
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+div.services .warpper .list {
+  overflow: hidden;
+  margin-top: 50px;
+}
+div.services .warpper .list .card {
+  width: 470px;
+  float: left;
+  margin: 15px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+div.services .warpper .list .card:hover {
+  background-color: #13a2b7;
+  color: #fff;
+}
+div.services .warpper .list .card:hover .info p {
+  color: #fff;
+}
+div.services .warpper .list .card img {
+  float: left;
+  width: 60px;
+  margin-right: 20px;
+  margin-top: 15px;
+}
+div.services .warpper .list .card .info {
+  width: 330px;
+  float: left;
+}
+div.services .warpper .list .card .info h3 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+div.services .warpper .list .card .info p {
+  color: gray;
+}
+section.doctors {
+  padding: 50px 0;
+}
+section.doctors .warpper {
+  width: 1000px;
+  margin: 0 auto;
+}
+section.doctors .warpper header {
+  text-align: center;
+}
+section.doctors .warpper header p {
+  font-size: 13px;
+}
+section.doctors .warpper header h3 {
+  font-size: 30px;
+}
+section.doctors .warpper ul.list {
+  overflow: hidden;
+  margin-top: 30px;
+}
+section.doctors .warpper ul.list li.item {
+  width: 303px;
+  float: left;
+  margin: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 15px 50px;
+}
+section.doctors .warpper ul.list li.item img {
+  border-radius: 50%;
+  border: 10px solid white;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px #ccc;
+  width: 100%;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+section.doctors .warpper ul.list li.item:hover img {
+  border-color: #13a2b7;
+}
+section.doctors .warpper ul.list li.item h3 {
+  margin-top: 15px;
+}
+section.doctors .warpper ul.list li.item p {
+  color: #13a2b7;
+  margin: 10px 0;
+}
+section.doctors .warpper ul.list li.item .icons i {
+  margin: 8px;
+  color: #666666;
+}
+section.gallery {
+  overflow: hidden;
+  height: 615px;
+}
+section.gallery ul.left {
+  width: 75%;
+  float: left;
+  overflow: hidden;
+}
+section.gallery ul.left li {
+  width: calc(33.33% - 15px);
+  height: 300px;
+  background-color: #fff;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+section.gallery ul.left li:nth-child(1) {
+  background-image: url(../imgs/gallery-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+section.gallery ul.left li:nth-child(2) {
+  background-image: url(../imgs/gallery-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+section.gallery ul.left li:nth-child(3) {
+  background-image: url(../imgs/gallery-3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+section.gallery ul.left li:nth-child(4) {
+  background-image: url(../imgs/gallery-5.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+section.gallery ul.left li:nth-child(5) {
+  background-image: url(../imgs/gallery-6.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+section.gallery ul.left li:nth-child(6) {
+  background-image: url(../imgs/gallery-7.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+section.gallery div.right {
+  width: 25%;
+  height: 615px;
+  background-color: aqua;
+  float: right;
+  background-image: url(../imgs/gallery-4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+section.gallery .envelop {
+  background-color: rgba(124, 192, 201, 0.7);
+  height: 100%;
+  text-align: center;
+  font-size: 30px;
+  position: relative;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+section.gallery .envelop i {
+  color: white;
+  padding: 0;
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+}
+section.news {
+  padding: 50px 0;
+}
+section.news .warpper {
+  width: 1000px;
+  margin: 0 auto;
+}
+section.news .warpper header {
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+section.news .warpper header .title {
+  float: left;
+}
+section.news .warpper header .title p {
+  color: gray;
+}
+section.news .warpper header .title h3 {
+  font-size: 30px;
+  font-weight: 700;
+}
+section.news .warpper header button {
+  float: right;
+  background-color: transparent;
+  width: 200px;
+  height: 50px;
+  border: 2px solid #13a2b7;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+section.news .warpper ul {
+  overflow: hidden;
+}
+section.news .warpper ul li {
+  width: 33.33%;
+  float: left;
+  padding: 20px;
+  cursor: pointer;
+}
+section.news .warpper ul li > div {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  line-height: 25px;
+  border-radius: 5px;
+}
+section.news .warpper ul li > div a {
+  text-decoration: none;
+  color: #323232;
+  font-weight: bold;
+}
+section.news .warpper ul li > div p {
+  color: gray;
+  margin: 15px 0;
+}
+section.news .warpper ul li > div:hover {
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.45);
+}
+section.news .warpper ul li > div:hover a {
+  text-decoration: underline;
+}
+section.news .warpper ul li > div > div img {
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+section.news .warpper ul li > div > div span {
+  vertical-align: middle;
+  font-size: 13px;
+  color: gray;
+}
+footer {
+  background-color: #121c1d;
+}
+footer .contact {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+footer .contact .warpper {
+  width: 1000px;
+  margin: 0 auto;
+}
+footer .contact .warpper .top {
+  overflow: hidden;
+  padding: 50px 0;
+}
+footer .contact .warpper .top .txt {
+  color: white;
+  text-transform: uppercase;
+  float: left;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 50px;
+  width: 180px;
+}
+footer .contact .warpper .top form {
+  float: left;
+  /* margin: 0 100px; */
+  margin-left: 150px;
+  border: 1px solid #13a2b7;
+  width: 350px;
+  height: 50px;
+  box-sizing: content-box;
+  border-radius: 50px;
+  overflow: hidden;
+}
+footer .contact .warpper .top form input {
+  width: 200px;
+  height: 50px;
+  border: none;
+  padding: 0 0 0 10px;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: white;
+  outline: none;
+}
+footer .contact .warpper .top form button {
+  width: 150px;
+  height: 50px;
+  border: none;
+  padding: 0;
+  background-color: #13a2b7;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+  letter-spacing: 2px;
+  /*更改字间距*/
+}
+footer .contact .warpper .top .icons {
+  width: 250px;
+  height: 50px;
+  float: right;
+  color: #fff;
+  overflow: hidden;
+}
+footer .contact .warpper .top .icons li {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
+  line-height: 50px;
+  text-align: center;
+  float: left;
+}
+footer .menu {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 30px 0;
+  color: #fff;
+  overflow: hidden;
+}
+footer .menu ul.left {
+  float: left;
+  overflow: hidden;
+}
+footer .menu ul.left > li {
+  float: left;
+  margin-right: 40px;
+}
+footer .menu ul.left > li ul .title {
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+footer .menu ul.left > li ul li {
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 15px;
+  line-height: 30px;
+}
+footer .menu ul.left > li ul.icons .title {
+  height: 30px;
+}
+footer .menu ul.left > li ul.icons li {
+  height: 50px;
+}
+footer .menu ul.left > li ul.icons .icon {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: start;
+  float: left;
+  color: #13a2b7;
+}
+footer .menu .map {
+  width: 250px;
+  height: 200px;
+  background-color: #fff;
+  float: right;
+}
+footer div.footer-txt {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0;
+  color: rgba(255, 255, 255, 0.65);
+  overflow: hidden;
+  font-size: 13px;
+}
+footer div.footer-txt .left {
+  float: left;
+}
+footer div.footer-txt .left a {
+  text-decoration: none;
+  color: #13a2b7;
+}
+footer div.footer-txt .left i {
+  color: #13a2b7;
+  margin-right: 3px;
+}
+footer div.footer-txt .right {
+  float: right;
+}
+/*# sourceMappingURL=./index.css.map */

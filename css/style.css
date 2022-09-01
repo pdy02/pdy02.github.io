@@ -1,0 +1,165 @@
+body {
+  margin: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.head {
+  width: 1200px;
+  height: 90px;
+  position: absolute;
+  top: 0;
+  left: calc(50% - 600px);
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.head .logo {
+  display: flex;
+}
+.head .logo .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-image: url("../imgs/1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-right: 15px;
+}
+.head .logo span {
+  color: #ffffff;
+  line-height: 50px;
+  font-size: 24px;
+}
+.head ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.head ul li {
+  width: 90px;
+  height: 100%;
+  line-height: 90px;
+}
+.head ul li a {
+  text-align: center;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s;
+}
+.head ul li a:hover {
+  background-color: #ffffff36;
+}
+section.banner {
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background-image: url("../imgs/bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+}
+section.banner .smile {
+  width: 400px;
+  height: 100px;
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 200px);
+  text-align: center;
+}
+section.banner .smile h1 {
+  font-size: 70px;
+  color: #fff;
+  margin: 0;
+}
+section.tag {
+  width: 1000px;
+  padding: 30px 50px;
+  box-sizing: border-box;
+  margin: 100px auto 0;
+  border-radius: 15px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+}
+section.tag .title {
+  text-align: center;
+  font-size: 36px;
+  padding-bottom: 20px;
+}
+section.tag p {
+  font-size: 20px;
+  color: #999;
+  line-height: 30px;
+  text-indent: 40px;
+}
+section.layout {
+  width: 1200px;
+  margin: 50px auto;
+  padding: 20px 0;
+}
+section.layout .title {
+  padding-left: 20px;
+}
+section.layout .main ul {
+  display: flex;
+}
+section.layout .main ul li {
+  width: 33.33%;
+  padding: 20px 20px;
+  box-sizing: border-box;
+}
+section.layout .main ul li a.card {
+  display: block;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 30px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+}
+section.layout .main ul li a.card .img {
+  border-radius: 15px;
+  overflow: hidden;
+}
+section.layout .main ul li a.card .img .img-bg {
+  width: 100%;
+  height: 160px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.3s;
+}
+section.layout .main ul li a.card .info {
+  text-align: center;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.605);
+}
+section.layout .main ul li a.card:hover .img .img-bg {
+  transform: scale(1.2);
+}
+section.layout .main ul li:nth-child(1) .card .img .img-bg {
+  background-image: url("../imgs/layout1.png");
+}
+section.layout .main ul li:nth-child(2) .card .img .img-bg {
+  background-image: url("../imgs/1.jpg");
+}
+section.layout .main ul li:nth-child(3) .card .img .img-bg {
+  background-image: url("../imgs/bg.png");
+}
