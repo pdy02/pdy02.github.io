@@ -21,7 +21,7 @@ a {
 }
 section.nav {
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 1;
   transition: all 0.3s;
@@ -41,7 +41,7 @@ section.nav .head .logo .avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-image: url("../imgs/1.jpg");
+  background-image: url("../imgs/head.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -170,11 +170,56 @@ section#layout .main ul li a.card:hover .img .img-bg {
   transform: scale(1.2);
 }
 section#layout .main ul li:nth-child(1) .card .img .img-bg {
-  background-image: url("../imgs/layout1.png");
+  background-image: url("../imgs/layoutImgs/layout1.png");
 }
 section#layout .main ul li:nth-child(2) .card .img .img-bg {
-  background-image: url("../imgs/layout2.png");
+  background-image: url("../imgs/layoutImgs/layout2.png");
 }
 section#layout .main ul li:nth-child(3) .card .img .img-bg {
-  background-image: url("../imgs/layout3.png");
+  background-image: url("../imgs/layoutImgs/layout3.png");
 }
+section#jsCase {
+  width: 1200px;
+  margin: 50px auto;
+  padding: 20px 0;
+}
+section#jsCase .title {
+  padding-left: 20px;
+}
+section#jsCase .main ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+section#jsCase .main ul li {
+  width: 33.33%;
+  padding: 20px 20px;
+  box-sizing: border-box;
+}
+section#jsCase .main ul li a.card {
+  display: block;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 30px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+}
+section#jsCase .main ul li a.card .img {
+  border-radius: 15px;
+  overflow: hidden;
+}
+section#jsCase .main ul li a.card .img .img-bg {
+  width: 100%;
+  height: 160px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.3s;
+}
+section#jsCase .main ul li a.card .info {
+  text-align: center;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.605);
+}
+section#jsCase .main ul li a.card:hover .img .img-bg {
+  transform: scale(1.2);
+}
+/*# sourceMappingURL=./style.css.map */

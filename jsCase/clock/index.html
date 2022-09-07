@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动/方块时钟</title>
+</head>
+
+<body>
+    <style>
+        /* body {
+            height: 100%;
+        } */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #scroll {
+            background-color: #45454650;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        #scroll main {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            width: 400px;
+        }
+
+        #scroll .ss,
+        #scroll .hh,
+        #scroll .ff {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #scroll .ss div,
+        #scroll .hh div,
+        #scroll .ff div {
+            display: flex;
+            flex-direction: column;
+            width: 50px;
+            height: 100px;
+            margin-right: 5px;
+            overflow: hidden;
+        }
+
+        #scroll .ss .s1 span,
+        #scroll .ss .s2 span,
+        #scroll .ff .f1 span,
+        #scroll .ff .f2 span,
+        #scroll .hh .h1 span,
+        #scroll .hh .h2 span {
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            background-color: #454546;
+            color: white;
+            font-size: 60px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+    </style>
+
+
+    <style>
+        /* :root{
+        height: 100%;
+    } */
+        #fang {
+            height: 100vh;
+            /* width: 100vw; */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #222222;
+        }
+
+        #fang .nums,
+        .s1,
+        .gong {
+            width: 125px;
+            height: 180px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            /* background-color: aqua; */
+        }
+
+        #fang .s1,
+        #fang .h1,
+        #fang .f1 {
+            margin-right: 10px;
+        }
+
+        #fang .nums i,
+        #fang .s1 i,
+        #fang .gong i {
+            width: 30%;
+            height: 30px;
+            background-color: #fff;
+            transition: all .3s;
+            transform: scale(0);
+            /* background-color: #fff; */
+        }
+
+        #fang i.active {
+            transform: scale(1);
+        }
+
+        #fang main {
+            width: 900px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .hh,
+        .ff,
+        .ss {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 250px;
+        }
+
+        #fang main .fenh {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: 36px;
+            height: 180px;
+        }
+
+        #fang .fenh i {
+            height: 30px;
+        }
+
+        #fang .fenh i.active {
+            background-color: #fff;
+        }
+    </style>
+
+
+    </head>
+
+    <body>
+        <section id="scroll">
+            <main>
+                <div class="hh">
+                    <div class="h1">
+                        <span>0</span>
+                    </div>
+                    <div class="h2">
+                        <span>0</span>
+                    </div>
+                </div>
+
+                <div class="ff">
+                    <div class="f1">
+                        <span>0</span>
+                    </div>
+                    <div class="f2">
+                        <span>0</span>
+                    </div>
+                </div>
+
+                <div class="ss">
+                    <div class="s1">
+                        <span>0</span>
+                    </div>
+                    <div class="s2">
+                        <span>0</span>
+                    </div>
+                </div>
+            </main>
+        </section>
+        <section id="fang">
+            <main>
+                <div class="hh">
+                    <div class="h1 gong"></div>
+                    <div class="h2 gong"></div>
+                </div>
+                <div class="ff">
+                    <div class="f1 gong"></div>
+                    <div class="f2 gong"></div>
+                </div>
+                <div class="ss">
+                    <div class="s1 gong"></div>
+                    <div class="nums gong"></div>
+                </div>
+            </main>
+        </section>
+        <script>
+            // 变化函数
+            function showNewNum(dom, n) {
+                var firstSpan = dom.getElementsByTagName('span')[0];
+                if (firstSpan.innerText !== n) {
+                    // 创建节点添加
+                    var newSpan2dom = document.createElement('span');
+                    newSpan2dom.innerText = n;
+                    dom.appendChild(newSpan2dom)
+                    // 上移
+                    firstSpan.style.marginTop = "-100px"
+                    // 删除节点
+                    setTimeout(function () {
+                        dom.removeChild(firstSpan)
+                    }, 300)
+                }
+            }
+            // 初始化函数
+            (function fnLOad() {
+                // 获取时间
+                var d = new Date();
+                var ss = String(d.getSeconds()).padStart(2, "0")
+                var ff = String(d.getMinutes()).padStart(2, "0")
+                var hh = String(d.getHours()).padStart(2, "0")
+                document.querySelectorAll('#scroll .ss div').forEach(function (item, i) {
+                    showNewNum(item, ss[i])
+                })
+                document.querySelectorAll('#scroll .ff div').forEach(function (item, i) {
+                    showNewNum(item, ff[i])
+                })
+                document.querySelectorAll('#scroll .hh div').forEach(function (item, i) {
+                    showNewNum(item, hh[i])
+                })
+            })()
+
+            setInterval(function () {
+                // 获取时间
+                var d = new Date();
+                var ss = String(d.getSeconds()).padStart(2, "0")
+                var ff = String(d.getMinutes()).padStart(2, "0")
+                var hh = String(d.getHours()).padStart(2, "0")
+                // 获取元素
+                var s2dom = document.querySelector(".s2")
+                var span2dom = s2dom.getElementsByTagName("span")[0]
+                document.querySelectorAll('#scroll .ss div').forEach(function (item, i) {
+                    showNewNum(item, ss[i])
+                })
+                document.querySelectorAll('#scroll .ff div').forEach(function (item, i) {
+                    showNewNum(item, ff[i])
+                })
+                document.querySelectorAll('#scroll .hh div').forEach(function (item, i) {
+                    showNewNum(item, hh[i])
+                })
+            }, 1000)
+        </script>
+
+
+        <script>
+            var nums = [
+                [
+                    [1, 1, 1],
+                    [1, 0, 1],
+                    [1, 0, 1],
+                    [1, 0, 1],
+                    [1, 1, 1],
+                ],
+                [
+                    [0, 0, 1],
+                    [0, 0, 1],
+                    [0, 0, 1],
+                    [0, 0, 1],
+                    [0, 0, 1],
+                ],
+                [
+                    [1, 1, 1],
+                    [0, 0, 1],
+                    [1, 1, 1],
+                    [1, 0, 0],
+                    [1, 1, 1],
+                ],
+                [
+                    [1, 1, 1],
+                    [0, 0, 1],
+                    [1, 1, 1],
+                    [0, 0, 1],
+                    [1, 1, 1],
+                ],
+                [
+                    [1, 0, 1],
+                    [1, 0, 1],
+                    [1, 1, 1],
+                    [0, 0, 1],
+                    [0, 0, 1],
+                ],
+                [
+                    [1, 1, 1],
+                    [1, 0, 0],
+                    [1, 1, 1],
+                    [0, 0, 1],
+                    [1, 1, 1],
+                ],
+                [
+                    [1, 1, 1],
+                    [1, 0, 0],
+                    [1, 1, 1],
+                    [1, 0, 1],
+                    [1, 1, 1],
+                ],
+                [
+                    [1, 1, 1],
+                    [0, 0, 1],
+                    [0, 0, 1],
+                    [0, 0, 1],
+                    [0, 0, 1],
+                ],
+                [
+                    [1, 1, 1],
+                    [1, 0, 1],
+                    [1, 1, 1],
+                    [1, 0, 1],
+                    [1, 1, 1],
+                ],
+                [
+                    [1, 1, 1],
+                    [1, 0, 1],
+                    [1, 1, 1],
+                    [0, 0, 1],
+                    [1, 1, 1],
+                ],
+
+            ]
+            var numsDom = document.querySelector('#fang .nums');
+            var s1Dom = document.querySelector('#fang .s1')
+            var sqDom = document.querySelectorAll('#fang .gong')
+            // 初始化创建方块
+            function square(ele) {
+                nums[0].forEach(function (row, rowi) {
+                    row.forEach(function (item, i) {
+                        var node = document.createElement('i')
+                        ele.appendChild(node)
+                    })
+                })
+            }
+
+            sqDom.forEach(function (item, i) {
+                square(item)
+                show(item, 0)
+            })
+            function show(ele, n) {
+                // console.log(ele);
+                var iDom = ele.querySelectorAll('i')
+                nums[n].forEach(function (row, rowi) {
+                    row.forEach(function (item, i) {
+                        if (item) {
+                            iDom[rowi * 3 + i].classList.add('active')
+                        } else {
+                            iDom[rowi * 3 + i].classList.remove('active')
+                        }
+                    })
+                })
+            }
+
+            setInterval(function () {
+                var d = new Date();
+                var ss = String(d.getSeconds()).padStart(2, '0');
+                var ff = String(d.getMinutes()).padStart(2, '0');
+                var hh = String(d.getHours()).padStart(2, '0');
+                show(numsDom, ss[1])
+                show(s1Dom, ss[0])
+                show(sqDom[3], ff[1])
+                show(sqDom[2], ff[0])
+                show(sqDom[1], hh[1])
+                show(sqDom[0], hh[0])
+            }, 1000)
+        </script>
+    </body>
+
+</html>

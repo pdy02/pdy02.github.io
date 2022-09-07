@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048游戏</title>
+    <style>
+        :root {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgba(0, 0, 0, 0.488);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            width: 500px;
+            height: 500px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .box>div {
+            width: 100px;
+            height: 100px;
+            background-color: bisque;
+            margin: 10px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 50px;
+            color: #fff;
+            font-weight: 600;
+        }
+        .sco{
+            display: flex;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+        h1 {
+            margin: 0 auto;
+            text-align: start;
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            /* background-color: #fff; */
+            font-size: 15px;
+        }
+
+        .btn {
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            background-color: #fff;
+            line-height: 50px;
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sco">
+        <h1>当前分数:&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+        <h1 class="max">最高分数:&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+    </div>
+    <div class="box"></div>
+    <div class="btn">重新开始</div>
+    <script>
+        // 获取节点
+        var boxDom = document.querySelector('.box');
+        // 创建节点插入
+        function fnCreate() {
+            for (var i = 0; i < 16; i++) {
+                var node = document.createElement('div');
+                // var nodechild = document.createElement('div');
+                // nodechild.className = 'child'
+                // node.appendChild(nodechild)
+                boxDom.appendChild(node)
+            }
+        }
+        fnCreate();
+        // 获取child集合
+        var childDom = document.querySelectorAll('.box div');
+        childDom = Array.prototype.slice.call(childDom)
+        // 创建二维数组接收16个dom对象
+        // var arr = [[],[],[]]
+        // 一维转二维函数
+        function zhuan2(arr, cound) {
+            // Math.ceil(arr.length / cound)
+            var tmp = [];
+            var newArr = []
+            for (var i = 0; i < Math.ceil(arr.length / cound); i++) {
+                tmp = arr.slice(i * cound, i * cound + cound);
+                newArr.push(tmp)
+                // Math.ceil(arr.length / cound)
+            }
+            return newArr
+            // for(var i = 0; i)
+        }
+        var arr = zhuan2(childDom, 4);
+
+        // 初始化随机数
+        // 随机生成两个数
+        function fnRandom() {
+            var randX = Math.floor(Math.random() * 4);
+            var randY = Math.floor(Math.random() * 4);
+            var a = Math.floor(Math.random() * 4);
+            var b = Math.floor(Math.random() * 4);
+            var c1 = 2 * Math.floor(Math.random() * 2 + 1)
+            var c2 = 2 * Math.floor(Math.random() * 2 + 1)
+            if (randX != a || randY != b) {
+                arr[randX][randY].innerText = c1
+                arr[a][b].innerText = c2
+            } else {
+                fnRandom();
+            }
+        }
+        fnRandom()
+        // 获取分数div
+        var scoDom = document.querySelector('h1')
+        var maxScoDom = document.querySelector('.max')
+        var maxNum = ['2', '4', '2'];
+        // 定义分数
+        var score = 0;
+        // console.log(localStorage.getItem('maxSco'));
+        if(localStorage.getItem('maxSco')){
+            var maxSco = localStorage.getItem("maxSco");
+            maxScoDom.innerHTML = '最高分数:' + maxSco;
+        }else{
+            localStorage.setItem('maxSco',"0")
+        }
+        // var maxSco = 0;
+        // function fnMove(a, b, c) {
+        //     for (var i = 0; i < 4; i++) {
+        //         for (var j = 0; j < 4; j++) {
+        //             if (arr[i][j].innerHTML == '' && a && arr[b][c].innerHTML != '') {
+        //                 arr[i][j].innerHTML = arr[a][j].innerHTML;
+        //                 arr[b][j].innerHTML = ''
+        //                 fnTop(); //递归
+        //             }
+        //             else if (i < 3 && arr[i][j].innerHTML != '' && arr[i + 1][j].innerHTML != '' && arr[i][j].innerHTML == arr[i + 1][j].innerHTML) {
+        //                 arr[i][j].innerHTML = 2 * arr[i][j].innerHTML
+        //                 // if (maxNum.indexOf(arr[i][j].innerHTML) != -1) {
+        //                 //     console.log('找到了');
+        //                 // } else {
+        //                 //     maxNum.push(arr[i][j].innerHTML)
+        //                 // }
+        //                 arr[i + 1][j].innerHTML = ''
+        //             }
+        //         }
+        //     }
+        // };
+        // top fnMove(i < 3,i+1,j)
+        // left fnMove(j<3,i,j+1)
+        // right fnMove(j>0,i,j-1)
+        // bottom fnMove(i>0,i-1,j)
+        function fnTop() {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    if (arr[i][j].innerHTML == '' && i < 3 && arr[i + 1][j].innerHTML != '') {
+                        arr[i][j].innerHTML = arr[i + 1][j].innerHTML;
+                        arr[i + 1][j].innerHTML = ''
+                        fnTop(); //递归
+                    }
+                    else if (i < 3 && arr[i][j].innerHTML != '' && arr[i + 1][j].innerHTML != '' && arr[i][j].innerHTML == arr[i + 1][j].innerHTML) {
+                        arr[i][j].innerHTML = 2 * arr[i][j].innerHTML
+                        // if(maxNum.indexOf(arr[i][j].innerHTML) != -1){
+                        //     console.log('找到了');
+                        // }else{
+                        //     maxNum.push(arr[i][j].innerHTML)
+                        // }
+                        arr[i + 1][j].innerHTML = ''
+                        score += Number(arr[i][j].innerHTML);
+                        if(score > maxSco){
+                            maxSco = score
+                        }
+                        maxScoDom.innerHTML = '最高分数:' + maxSco;
+                        localStorage.setItem("maxSco",maxSco);
+                        scoDom.innerHTML = '当前分数:' + score;
+                    }
+                }
+            }
+        };
+        function fnLeft() {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    if (arr[i][j].innerHTML == '' && j < 3 && arr[i][j + 1].innerHTML != '') {
+                        arr[i][j].innerHTML = arr[i][j + 1].innerHTML;
+                        arr[i][j + 1].innerHTML = '';
+                        fnLeft();
+                    }
+                    else if (j < 3 && arr[i][j].innerHTML != '' && arr[i][j + 1].innerHTML != '' && arr[i][j].innerHTML == arr[i][j + 1].innerHTML) {
+                        arr[i][j].innerHTML = 2 * arr[i][j + 1].innerHTML
+                        arr[i][j + 1].innerHTML = '';
+                        score += Number(arr[i][j].innerHTML);
+                        if(score > maxSco){
+                            maxSco = score
+                        }
+                        maxScoDom.innerHTML = '最高分数:' + maxSco;
+                        localStorage.setItem("maxSco",maxSco);
+                        scoDom.innerHTML = '当前分数:' + score;
+                        // if(maxNum.indexOf(arr[i][j].innerHTML) != -1){
+                        //     console.log('找到了');
+                        // }else{
+                        //     maxNum.push(arr[i][j].innerHTML)
+                        // }
+                    }
+                }
+            }
+        }
+        function fnRight() {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    if (arr[i][j].innerHTML == '' && j > 0 && arr[i][j - 1].innerHTML != '') {
+                        arr[i][j].innerHTML = arr[i][j - 1].innerHTML;
+                        arr[i][j - 1].innerHTML = '';
+                        fnRight();
+                    } else if (j > 0 && arr[i][j].innerHTML != '' && arr[i][j - 1].innerHTML != '' && arr[i][j].innerHTML == arr[i][j - 1].innerHTML) {
+                        arr[i][j].innerHTML = 2 * arr[i][j].innerHTML;
+                        arr[i][j - 1].innerHTML = '';
+                        score += Number(arr[i][j].innerHTML);
+                        if(score > maxSco){
+                            maxSco = score
+                        }
+                        maxScoDom.innerHTML = '最高分数:' + maxSco;
+                        localStorage.setItem("maxSco",maxSco);
+                        scoDom.innerHTML = '当前分数:' + score;
+                        // if(maxNum.indexOf(arr[i][j].innerHTML) != -1){
+                        //     console.log('找到了');
+                        // }else{
+                        //     maxNum.push(arr[i][j].innerHTML)
+                        // }
+                    }
+                }
+            }
+        }
+        function fnBottom() {
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    if (arr[i][j].innerHTML == '' && i > 0 && arr[i - 1][j].innerHTML != '') {
+                        arr[i][j].innerHTML = arr[i - 1][j].innerHTML;
+                        arr[i - 1][j].innerHTML = '';
+                        fnBottom();
+                    } else if (i > 0 && arr[i][j].innerHTML != '' && arr[i - 1][j].innerHTML != '' && arr[i][j].innerHTML == arr[i - 1][j].innerHTML) {
+                        arr[i][j].innerHTML = 2 * arr[i][j].innerHTML;
+                        arr[i - 1][j].innerHTML = '';
+                        score += Number(arr[i][j].innerHTML);
+                        if(score > maxSco){
+                            maxSco = score
+                        }
+                        maxScoDom.innerHTML = '最高分数:' + maxSco;
+                        localStorage.setItem("maxSco",maxSco);
+                        scoDom.innerHTML = '当前分数:' + score;
+
+                        // if(maxNum.indexOf(arr[i][j].innerHTML) != -1){
+                        //     console.log('找到了');
+                        // }else{
+                        //     maxNum.push(arr[i][j].innerHTML)
+                        // }
+                    }
+                }
+            }
+        }
+        function fnShuchu() {
+            // console.log('执行了刷新函数');
+            var tmpDom = []
+            // var a = Math.floor(Math.random() * 4);
+            // var b = Math.floor(Math.random() * 4);
+            var c = Math.floor(Math.random() * maxNum.length);
+            arr.forEach(function (row, rowi) {
+                row.forEach(function (item, i) {
+                    // if(item.innerHTML == '' && a == rowi && b == i){
+                    //     arr[a][b].innerHTML = maxNum[c];
+                    // }
+                    if (item.innerHTML == '') {
+                        tmpDom.push(item)
+                    }
+                })
+            })
+            var tmpRandom = Math.floor(Math.random() * tmpDom.length)
+            if (tmpDom.length) {
+                tmpDom[tmpRandom].innerHTML = maxNum[c];
+            }
+        }
+        //document.onkeydown = keyDown;
+
+        document.onkeydown = function (e) {
+            // console.log(e);
+            if (e.keyCode === 38) {
+                fnTop();
+                // fnMove('i < 3','i+1','j')
+                fnShuchu();
+                fnOver();
+            } else if (e.keyCode === 37) {
+                fnLeft();
+                // fnMove(j<3,i,j+1)
+                fnShuchu();
+                fnOver();
+                // downleft();
+            } else if (e.keyCode === 39) {
+                fnRight();
+                // fnMove(j>0,i,j-1)
+                fnShuchu();
+                fnOver();
+            } else if (e.keyCode === 40) {
+                fnBottom();
+                // fnMove(i>0,i-1,j)
+                fnShuchu();
+                // setTimeout(function(){
+                    fnOver()
+                // },500)
+                // fnOver();
+            }
+            // fnOver();
+        }
+        document.getElementsByClassName('btn')[0].onclick = function () {
+            arr.forEach(function (row) {
+                row.forEach(function (item) {
+                    item.innerHTML = ''
+                })
+            })
+            fnRandom();
+            score = 0;
+            document.querySelector('h1').innerHTML = '当前分数:' + score
+        }
+
+        //游戏结束函数 
+        function fnOver() {
+            var tmp = 0;
+            arr.forEach(function (row) {
+                row.forEach(function (item) {
+                    if (item.innerHTML == '') {
+                        tmp++
+                    }
+                })
+            })
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    if(i < 3 && arr[i][j].innerHTML == arr[i+1][j].innerHTML){
+                        tmp++
+                    }
+                    if(j < 3 && arr[i][j].innerHTML == arr[i][j+1].innerHTML){
+                        tmp++
+                    }
+                }
+            }
+            if(tmp === 0){
+                setTimeout(function(){
+                    alert('游戏结束')
+                },300)
+            }
+        }
+    </script>
+</body>
+
+</html>

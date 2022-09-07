@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抽奖</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            margin: 0 auto;
+            width: 350px;
+            height: 350px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* align-items: center; */
+            align-content: center;
+        }
+
+        ul li {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            background-color: #16baec;
+            color: #fff;
+            /* background-color: orange; */
+        }
+
+        li.act {
+            background-color: rgba(0, 0, 0, 0.333);
+        }
+        .show{
+            width: 200px;
+            height: 50px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.333);
+            text-align: center;
+            line-height: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="show"></div>
+    <ul class="box"></ul>
+    <script>
+        var nums = ['手机', '平板', '电磁炉', '电视', '开始', '洗衣机', '电脑', '冰箱', '衣柜'];
+        var box = document.querySelector('.box');
+        // 初始化 创建节点
+        nums.forEach(function (item, index) {
+            var node = document.createElement('li')
+            node.innerText = item;
+            box.appendChild(node);
+        })
+        // 获取所有li
+        var liDom = document.querySelectorAll('li')
+        // 开始按钮样式初始化
+        liDom[4].style.backgroundColor = 'orange'
+        liDom[4].style.cursor = 'pointer';
+        var show = document.querySelector('.show')
+        var index = 0;
+        // 锁住按钮
+        var suo = true;
+        liDom[4].onclick = function () {
+            if(suo){
+                suo = false;
+            }else{
+                return;
+            }
+            this.style.cursor = 'not-allowed'
+            index = 0
+            show.innerText = ''
+            var ran = Math.floor(Math.random() * 16 + 18)
+            console.log(ran);
+            var txt;
+            for (let i = 0; i < ran; i++) {
+                setTimeout(function () {
+                    if(index === 8){
+                        index = 0
+                    }
+                    liDom.forEach(function (it) {
+                        it.className = ''
+                    })
+                    switch (index) {
+                        case 0:
+                            liDom[0].classList.add('act');
+                            break;
+                        case 1:
+                            liDom[1].classList.add('act');
+                            break;
+                        case 2:
+                            liDom[2].classList.add('act');
+                            break;
+                        case 3:
+                            liDom[5].classList.add('act');
+                            break;
+                        case 4:
+                            liDom[8].classList.add('act');
+                            break;
+                        case 5:
+                            liDom[7].classList.add('act');
+                            break;
+                        case 6:
+                            liDom[6].classList.add('act');
+                            break;
+                        case 7:
+                            liDom[3].classList.add('act');
+                            break;
+                        default:
+                        liDom[0].classList.add('act');
+                            break;
+                        // case 8:
+                        //     liDom[3].classList.add('act');
+                        //     break;
+                    }
+                    // liDom.forEach(function (it) {
+                    //     it.className = ''
+                    // })
+                    console.log(index);
+                    index++;
+                }, i * 100)
+                setTimeout(function(){
+                    liDom.forEach(function(item){
+                        if(item.className == 'act'){
+                            txt = item.innerText
+                        }
+                    })
+                    show.innerText = '恭喜你,抽到了' + txt + '!!!'
+                    liDom[4].style.cursor = 'pointer'
+                    suo = true;
+                },ran * 100)
+            }
+        }
+    </script>
+</body>
+
+</html>

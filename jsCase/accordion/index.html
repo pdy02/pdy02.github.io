@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手风琴</title>
+</head>
+<body>
+    <div class="shou">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <style>
+        :root{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .shou{
+            width: 600px;
+            height: 320px;
+            display: flex;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+        }
+        .shou div{
+            width: 50px;
+            height: 100%;
+            background-size: auto 100%;
+            background-position: top center;
+            transition: all 0.5s;
+        }
+        .shou div:nth-child(1){
+            background-image: url(./img/1.jpg);
+        }
+        .shou div:nth-child(2){
+            background-image: url(./img/03.png);
+            width: 450px;
+        }
+        .shou div:nth-child(3){
+            background-image: url(./img/4.png);
+        }
+        .shou div:nth-child(4){
+            background-image: url(./img/5.png);
+        }
+    </style>
+    <script>
+        var imgs = document.querySelectorAll('.shou div');
+        imgs.forEach(function(img,i){
+            if(i === 1){
+                // console.log(img);
+                img.style.width = '450px'
+                var bg = getComputedStyle(img,null).getPropertyValue("background-image");
+                document.body.style.backgroundImage = bg;
+            }
+            img.onclick = function(){
+                imgs.forEach(function(item,index){
+                    if(i === index){
+                        item.style.width = '450px'
+                        var bg = getComputedStyle(item,null).getPropertyValue("background-image");
+                        document.body.style.backgroundImage = bg;
+                        // console.log(getComputedStyle(item,null).getPropertyValue("background-image"));
+                    }else{
+                        item.style.width = '50px'
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+</html>

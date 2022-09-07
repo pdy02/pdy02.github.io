@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则验证邮箱</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            width: 400px;
+            height: 350px;
+            /* background-color: rgba(240, 128, 128, 0.613); */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .emily{
+            position: relative;
+
+        }
+        .box input[type = 'text']{
+            width: 200px;
+            height: 50px;
+            /* border: none; */
+            padding-left: 10px;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        .box input[type = 'submit']{
+            height: 50px;
+            width: 50px;
+        }
+        .e-con{
+            position: absolute;
+            bottom: 56px;
+            /* border: 1px solid red; */
+            border: 1px solid green;
+            color: green;
+            border-radius: 10px;
+            width: 100%;
+            height: 100%;
+            display: none;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+        }
+        .emily .act{
+            border: 1px solid red;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="emily">
+            <input type="text" oninput="change()" onblur="isFocus()" placeholder="请输入邮箱">
+            <div class="e-con act">
+                <span>请输入正确的邮箱!</span>
+                <span>邮箱验证正确</span>
+            </div>
+        </div>
+        
+        <!-- <input type="submit" value="提交"> -->
+    </div>
+    <script>
+        var eEl = document.querySelector('.e-con');
+        var span1El = eEl.querySelector('span:nth-child(1)')
+        var span2El = eEl.querySelector('span:nth-child(2)')
+        function change(){
+            var reg = /(\w|\.)+@([a-z]|\d|-)+(\.[a-z]{2,}){1,2}$/gm
+            var isTrue = reg.test(event.target.value)
+            // console.log(isTrue);
+            fnEmily(isTrue)
+        }
+        function isFocus(){
+            fnEmily('')
+        }
+        function fnEmily(bole){
+            if(bole === ''){
+                eEl.style.display = 'none'
+                return;
+            }
+            eEl.style.display = 'flex';
+            if(bole){
+                eEl.classList.remove('act')
+                span1El.style.display = 'none'
+                span2El.style.display = 'block'
+            }else{
+                span2El.style.display = 'none'
+                span1El.style.display = 'block'
+                eEl.classList.add('act')
+            }
+        }
+    </script>
+</body>
+</html>

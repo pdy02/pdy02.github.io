@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简易轮播图</title>
+</head>
+
+<body>
+
+    <banner>
+        <div class="warp">
+            <img class="active" src="./img/1.jpg" alt="">
+            <img src="./img/2.jpg" alt="">
+            <img src="./img/3.jpg" alt="">
+            <img src="./img/4.jpg" alt="">
+            <img src="./img/5.jpg" alt="">
+            <img src="./img/6.jpg" alt="">
+            <ul>
+                <li data-index="0" title="0" class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div href="#" id="left"><</div>
+            <div href="#" id="right">></div>
+        </div>
+    </banner>
+
+    <style>
+        banner {
+            width: 100%;
+            height: 500px;
+            padding: 100px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .warp {
+            width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .warp img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: all .3s;
+        }
+
+        .warp img.active {
+            /* z-index: 0; */
+            opacity: 1;
+        }
+
+        .warp ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            width: 200px;
+            justify-content: space-between;
+            z-index: 10;
+            /* background-color: aqua; */
+            position: absolute;
+            bottom: 50px;
+            right: 80px;
+        }
+
+        ul li {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: gray;
+        }
+
+        ul li.active {
+            background-color: #fff;
+        }
+
+        .warp #left,
+        .warp #right {
+            position: absolute;
+            /* left: 0; */
+            top: calc(50% - 50px);
+            display: block;
+            width: 50px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.468);
+            z-index: 10;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 30px;
+            line-height: 100px;
+            cursor: pointer;
+        }
+
+        .warp #right {
+            right: 0;
+        }
+
+        .warp #left {
+            left: 0;
+        }
+    </style>
+
+
+    <script>
+        var index = 0;
+        let imgs = document.querySelectorAll('.warp img')
+        let list = document.querySelectorAll('.warp ul li')
+
+        // 点击高亮
+        for (let i = 0; i < list.length; i++) {
+            list[i].onclick = function(){
+                fnlist()
+                list[i].className = 'active'
+                imgs[i].className = 'active'
+                index = i
+                console.log(index);
+            }
+        }
+        
+        // 去除其他高亮
+        function fnlist(){
+            for(var i = 0; i < list.length; i++){
+                list[i].className = ''
+                imgs[i].className = ''
+            }
+        }
+
+        // 下一张 
+        var nextSwitch = true;
+        function next(){
+            if(nextSwitch === false){
+                return
+            }else{
+                nextSwitch = false
+            }
+            index++
+            if(index === 6){
+                index = 0
+            }else if(index === -1){
+                index = 5;
+            }
+            fnlist();
+            for(let i = 0; i < imgs.length; i++){
+                imgs[index].className = 'active'
+                list[index].className = 'active'
+            }
+            setInterval(function(){
+                nextSwitch = true
+            },2000)
+        }
+
+
+        // 上一张
+        let backSwitch = true;
+        function back(){
+            if(backSwitch == false) {
+                return
+            }else{
+                backSwitch = false
+            }
+            index--
+            if(index === -1){
+                index = 5
+            }
+            fnlist()
+            for(let i = 0; i < imgs.length; i++){
+                imgs[index].className = 'active'
+                list[index].className = 'active'
+            }
+            setTimeout(function(){
+                backSwitch = true
+            },2000)
+        }
+        // setTimeout(function(){
+        //     console.log('三秒后');
+        // },3000)
+        // setTimeout(function(){
+        //     console.log('六秒后');
+        // },6000)
+
+        // 轮播延时循环器
+        var lun = setInterval(function(){
+            // next()
+            index++
+            if(index === 6){
+                index = 0
+            }else if(index === -1){
+                index = 5;
+            }
+            fnlist();
+            for(let i = 0; i < imgs.length; i++){
+                imgs[index].className = 'active'
+                list[index].className = 'active'
+            }
+        },3000)
+
+        // 左右按钮
+        let left = document.getElementById('left')
+        let right = document.getElementById('right')
+
+        // 防抖
+
+        left.onclick = function(){
+            back()
+        }
+        right.onclick = function(){
+            next()
+        }
+    </script>
+</body>
+
+</html>

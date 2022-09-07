@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>别踩白块</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .box {
+            width: 400px;
+            height: 720px;
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.346);
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.346);
+            position: relative;
+        }
+
+        .box .over {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(200, 100, 200, 0.324);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .over .over-con {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            background-color: #fff;
+            color: block;
+            font-size: 3em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        .over-con button {
+            width: 100px;
+            height: 50px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .box .main {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main i {
+            display: block;
+            width: 100px;
+            height: 120px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            transition: background .3s;
+        }
+
+        .main i.act {
+            background-color: #a7a7a7;
+        }
+
+        .box .score {
+            width: 100%;
+            height: 50px;
+            font-size: 3em;
+            /* background-color: rgba(0, 0, 0, 0); */
+            position: absolute;
+            top: 10px;
+            z-index: 10;
+            text-align: center;
+            line-height: 50px;
+            color: lightcoral;
+            font-weight: 600;
+            pointer-events: none;
+            /* background-color: rgba(, green, blue, alpha); */
+        }
+
+        .box .start {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 50;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            /* justify-items: center; */
+            align-items: center;
+            /* align-content: center; */
+            font-size: 3em;
+            font-weight: 700;
+        }
+
+        .start button {
+            border: none;
+            background-color: rgba(0, 128, 0, 0.609);
+            box-shadow: 0 0 10px 0 rgba(0, 128, 0, 0.609);
+            border-radius: 20px;
+            /* margin-top: 50px; */
+            font-size: 16px;
+            font-weight: 700;
+            color: white;
+            width: 100px;
+            height: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="score">0</div>
+        <div class="start">
+            <span>别踩白块</span>
+            <span>历史记录:<span class="history">0</span>分</span>
+            <span style="margin:50px 0;">Game Start</span>
+            <button>开始游戏</button>
+        </div>
+        <div class="main">
+            <!-- <i></i> -->
+        </div>
+        <div class="over">
+            <div class="over-con">
+                <span>GameOver</span>
+                <button>重新开始</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 获取元素
+        var mainDom = document.querySelector('.box .main')
+        var overDom = document.querySelector('.box .over')
+        var scoreDom = document.querySelector('.box .score')
+        var restartDom = document.querySelector('.box .over-con button')
+        var startDom = document.querySelector('.box .start')
+        var startBtnDom = document.querySelector('.box .start button')
+        var historyDom = document.querySelector('.start .history')
+        // 游戏分数
+        var score = 0;
+        // 游戏最高分数
+        if (localStorage.getItem('gameMax')) {
+            gameMax = localStorage.getItem('gameMax')
+        } else {
+            localStorage.setItem('gameMax', '0')
+            var gameMax = 0;
+        }
+        historyDom.innerHTML = gameMax
+        // 游戏速度
+        var speed = 2;
+        // 游戏开始状态
+        var gameStart = false;
+        // 对象数组
+        var dots = []
+        // 开始游戏按钮点击事件
+        startBtnDom.onclick = function () {
+            startDom.style.display = 'none'
+            gameStart = true;
+        }
+        // 重新开始点击函数
+        restartDom.onclick = function () {
+            mainDom.innerHTML = '' //清空dom
+            dots.splice(0); //清空dots数组对象
+            score = 0; //分数清空
+            scoreDom.innerHTML = score;
+            speed = 0.01; //速度回归
+            init(); //重新初始化
+            overDom.style.display = 'none'
+            // console.log(dots[0].y,speed);
+            id = setInterval(function () { xun() }, 1000 / 60) //重新启用定时器
+            // 回到开始界面
+            startDom.style.display = 'flex'
+        }
+        mainDom.onclick = function () {
+            fnOver();
+        }
+        // 构造函数
+        function Dot(y) {
+            this.y = y;
+            this.x = Math.floor(Math.random() * 4)
+            // 创建插入
+            this.node = document.createElement('i');
+            this.update();
+            mainDom.appendChild(this.node)
+
+            // 点击事件
+            var _this = this;
+            // 未点击的dot对象
+            var notClick = dots.filter(function (it) {
+                return !this.act
+            })
+            this.node.onclick = function (e) {
+                if (this.classList.contains('act')) return
+                e.stopPropagation();
+                // 标记已点击过的
+                _this.act = true;
+                this.classList.add('act')
+
+                //累计分数
+                score++;
+                scoreDom.innerHTML = score
+                // 历史记录分数
+                if (score > gameMax) {
+                    gameMax = score;
+                    localStorage.setItem('gameMax', gameMax)
+                }
+                historyDom.innerHTML = gameMax
+                if (score % 10 === 0) {
+                    speed += 1
+                }
+                console.log(score, speed);
+            }
+        }
+        // 更新数据
+        Dot.prototype.update = function () {
+            // this.node.style.top = this.y * 120 + 'px';
+            this.node.style.top = this.y + 'px';
+            this.node.style.left = this.x * 100 + 'px'
+        }
+
+        Dot.prototype.move = function () {
+            this.y += speed;
+            // this.y += 0.01;
+            this.update()
+        }
+
+        // 初始化函数
+        function init() {
+            for (var i = 4; i > 0; i--) {
+                dots.push(new Dot((i - 2)*120))
+            }
+        }
+        init()
+
+        // 定时器执行函数
+        function xun() {
+            // 游戏开始状态限制
+            if (!gameStart) return;
+            // 移动
+            dots.forEach(function (item) {
+                item.move();
+            })
+
+            // 不断创建新节点
+            if (dots[dots.length - 1].y >= 0) {
+                dots.push(new Dot(dots[dots.length - 1].y - 120))
+            }
+
+            // 判断触底结束游戏
+            var first = dots.filter(function (it) {
+                return !it.act
+            })[0]
+            if (first && first.y >= 720) {
+                fnOver();
+            }
+
+            // 删除节点
+            var actfirst = dots.filter(function (it) {
+                return it.act
+            })[0]
+            if (actfirst && (actfirst.y) > 720) {
+                dots.splice(dots.indexOf(actfirst), 1);
+                mainDom.removeChild(actfirst.node)
+            }
+        }
+        // 定时器
+        var id = setInterval(function () {
+            xun()
+        }, 1000 / 60)
+        // 游戏结束函数
+        function fnOver() {
+            clearInterval(id);
+            overDom.style.display = 'flex'
+            gameStart = false;
+        }
+    </script>
+</body>
+
+</html>

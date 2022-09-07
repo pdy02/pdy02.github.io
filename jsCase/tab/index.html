@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选项卡</title>
+    <link rel="stylesheet" href="./css/tab.css">
+</head>
+
+<body>
+    <div id="tab">
+        <div class="dot">
+            <div>tab1</div>
+            <div>tab2</div>
+            <div>tab3</div>
+        </div>
+        <div class="content">
+            <div class="card">
+                1.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis exercitationem minima quisquam ex
+                earum sapiente, debitis ipsum quidem optio rerum!
+            </div>
+            <div class="card">
+                2.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim veritatis nostrum, blanditiis, quia
+                maiores nisi. Expedita cupiditate similique magnam, adipisci nesciunt, laborum rem! Excepturi, ad.
+            </div>
+            <div class="card">
+                3.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, ad esse. Hic at officiis fuga mollitia
+                quod.
+            </div>
+        </div>
+    </div>
+    <!-- <div class="lop">
+        <h2>加载中...</h2>
+    </div> -->
+    <script>
+        // window.addEventListener("pageshow", function(){
+        //     document.querySelector(".lop").style.display = 'none'
+        // });
+        var dots = document.querySelectorAll('#tab .dot div')
+        var card = document.querySelectorAll('#tab .content .card')
+
+        var index = 0;
+        function show(n) {
+            for (var i = 0; i < dots.length; i++) {
+                if (i === n) {
+                    dots[i].style.backgroundColor = 'white'
+                    card[i].style.zIndex = '1'
+                }else{
+                    dots[i].style.backgroundColor = '#d7d7d7'
+                    card[i].style.zIndex = '0'
+                }
+            }
+        }
+        show(index)
+
+        for(var i = 0; i < dots.length; i++){
+            dots[i].setAttribute('data-index',i)
+            dots[i].onclick = function(){
+                index = Number(this.getAttribute('data-index'))
+                show(index)
+            }
+        }
+    </script>
+</body>
+
+</html>

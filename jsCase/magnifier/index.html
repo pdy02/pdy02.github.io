@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜</title>
+    <style>
+        
+
+        .fangda {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .fangda .thumb {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        .fangda .thumb img {
+            width: 100%;
+        }
+
+        .info {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            /* pointer-events: none; */
+        }
+
+        .fangda .thumb .mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 255, 0.5);
+            pointer-events: none;
+            cursor: crosshair;
+            /* cursor: move; */
+        }
+
+        .fangda .zoom {
+            width: 600px;
+            height: 600px;
+            background-size: 200%;
+            background-image: url(./2.png);
+            background-repeat: no-repeat;
+            opacity: 0;
+            /* background-position: ; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fangda">
+        <div class="thumb">
+            <img src="./2.png" alt="">
+            <div class="mask"></div>
+        </div>
+        <div class="zoom"></div>
+    </div>
+    <div class="info">
+        <input type="text" title="放大镜倍数" placeholder="放大镜倍数" id="multiple" /><button>确定</button>
+        <h3>当前倍数:</h3>
+    </div>
+    <script>
+        // 获取元素
+        var thumb = document.querySelector('.fangda .thumb');
+        var mask = document.querySelector('.fangda .thumb .mask');
+        var zoom = document.querySelector('.fangda .zoom');
+        var h3 = document.querySelector(".info h3");
+        var btn = document.querySelector(".info button");
+        var inp = document.querySelector(".info input");
+        // 定义放大倍数 
+        var mult = 2;
+        function init(n = 2) {
+            mult = n;
+            h3.innerHTML = `当前倍数:${mult}`
+        }
+        init(mult);
+        btn.onclick = function () {
+            console.log(inp.value);
+            if (inp.value) {
+                // console.log(123);
+                init(inp.value)
+                magnifier()
+            }
+            inp.value = ''
+        }
+        magnifier()
+        function magnifier() {
+            // 设置zoom层的放大比例
+            zoom.style.backgroundSize = mult * 100 + '%';
+            // 获取zoom宽高
+            var zoomWidth = zoom.clientWidth;
+            var zoomHeight = zoom.clientHeight;
+            // 获取thumb距离屏幕的偏移
+            var offsetX = thumb.offsetLeft;
+            var offsetY = thumb.offsetTop;
+            // 获取thumb的宽高
+            var thumbWidth = thumb.clientWidth;
+            var thumbHeight = thumb.clientHeight;
+    
+            // 设置mask的宽高
+            mask.style.width = thumbWidth / mult + 'px';
+            mask.style.height = thumbHeight / mult + 'px';
+            // 获取mask的宽高
+            var maskWidth = mask.clientWidth;
+            var maskHeight = mask.clientHeight;
+            // 获取放大图和遮罩的倍数
+            var multWidth = zoomWidth / maskWidth;
+            var multHeight = zoomHeight / maskHeight;
+            // 鼠标在遮罩居中
+            var maskX = maskWidth / 2;
+            var maskY = maskHeight / 2;
+            // 鼠标移动事件
+            thumb.onmousemove = function () {
+                // zoom区域显示
+                zoom.style.opacity = '1'
+                // 获取鼠标在thumb的坐标
+                console.log(event);
+                // var mx = event.pageX - offsetX
+                // var my = event.pageY - offsetY
+                var mx = event.offsetX
+                var my = event.offsetY
+                // console.log(mx, my);
+    
+                var maskLeft = mx - maskX;
+                var maskTop = my - maskY;
+                // 限定遮罩在thumb内
+                if (maskLeft < 0) {
+                    maskLeft = 0
+                } else if (maskLeft > thumbWidth - maskWidth) {
+                    maskLeft = thumbWidth - maskWidth
+                }
+                if (maskTop < 0) {
+                    maskTop = 0
+                } else if (maskTop > thumbHeight - maskHeight) {
+                    maskTop = thumbHeight - maskHeight
+                }
+    
+                // 遮罩随鼠标移动
+                mask.style.left = maskLeft + 'px'
+                mask.style.top = maskTop + 'px'
+    
+                // zoom随遮罩移动
+                zoom.style.backgroundPosition = -multWidth * maskLeft + 'px ' + -multHeight * maskTop + 'px'
+            }
+            thumb.onmouseleave = function () {
+                zoom.style.opacity = '0'
+            }
+        }
+    </script>
+</body>
+
+</html>

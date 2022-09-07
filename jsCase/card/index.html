@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卡片记忆</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <style>
+        :root {
+            height: 100%;
+            background-color: #222;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ul.box {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 500px;
+            height: 500px;
+            /* background-color: aquamarine; */
+        }
+
+        ul.box li {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 5px;
+            background-color: rgb(157, 204, 246);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+        }
+
+        ul.box li i {
+            color: rgb(157, 204, 246);
+            transition: all .3s;
+        }
+
+        ul.box li.act i {
+            color: aliceblue;
+        }
+
+        ul.box li.acc {
+            background-color: aquamarine;
+            transition: all .3s;
+        }
+
+        ul.box li.acc i {
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="box"></ul>
+    <div class="start">
+        <div>
+            <button>开始游戏</button>
+        </div>
+    </div>
+    <style>
+        .start {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /* top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0; */
+            /* margin: auto; */
+            background-color: rgba(0, 0, 0, 0.605);
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* visibility: hidden; */
+            /* visibility: inherit; */
+        }
+
+        .start>div {
+            width: 300px;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .start>div button {
+            color: #fff;
+            font-size: 2em;
+            background-color: lightcoral;
+            width: 150px;
+            height: 50px;
+            border: none;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.605);
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // 获取元素
+        var box = document.querySelector('.box');
+        var icons = [
+            "fa-bath",
+            "fa-telegram",
+            "fa-anchor",
+            "fa-battery-quarter",
+            "fa-bank",
+            "fa-bug",
+            "fa-bus",
+            "fa-child",
+        ];
+        // 双倍icon函数
+        function double(arr) {
+            var tmp = [];
+            arr.forEach(function (icon) {
+                tmp.push(icon);
+                tmp.push(icon);
+            })
+            return tmp;
+        }
+        // var arr = [];
+        // icons.forEach(function(icon){
+        //     arr.push(icon);
+        //     arr.push(icon);
+        // })
+        // 对arr随机排序(洗牌函数)
+        function shuffle(arr) {
+            arr.sort(function () {
+                return Math.random() - 0.5
+            })
+            return arr;
+        }
+        // arr.sort(function(){
+        //     return Math.random() - 0.5
+        // })
+        // 锁
+        var suo = false;
+        var bushu = 0;
+        var accList = []
+        // 初始化
+        var arr = shuffle(double(icons));
+        arr.forEach(function (icon) {
+            var node = document.createElement('li');
+            node.innerHTML = '<i class="fa ' + icon + '"></i>'
+            box.appendChild(node)
+
+            // 为每个li添加点击事件
+            node.onclick = function () {
+                // 累计步数
+                bushu++;
+                // if(!suo){return}
+                // 如果点击已经已经完成的卡片,不执行函数
+                if (this.classList.contains('acc')) {
+                    return
+                }
+                // 为点击的节点添加act类
+                this.classList.add('act')
+
+                // 遍历所有li元素中有act类的li
+                var actList = [];
+                for (let i = 0; i < box.children.length; i++) {
+                    if (box.children[i].classList.contains('act')) {
+                        actList.push(box.children[i])
+                    }
+                }
+                // 翻开两个卡片li
+                if (actList.length === 2) {
+                    // 删除act类
+                    setTimeout(function () {
+                        actList[0].classList.remove('act')
+                        actList[1].classList.remove('act')
+                        // 如果两个卡片相同,则添加acc(已完成的类)
+                        if (actList[0].innerHTML === actList[1].innerHTML) {
+                            actList[0].classList.add('acc');
+                            actList[1].classList.add('acc');
+                            accList.push(actList[0])
+                            accList.push(actList[1])
+                        }
+                        // if (accList.length === box.children.length) {
+                        //     alert('恭喜你,完成了游戏')
+                        // }
+                    }, 500)
+                }
+                // 遍历所有acc已完成类
+                // accList.forEach(function(){})
+                // console.log(accList.length);
+                setTimeout(function(){
+                    if(accList.length === box.children.length){
+                        alert('恭喜你,完成了游戏\n累计用步' + bushu + '步')
+                    }
+                },800)
+            }
+        })
+        // box.childElementCount()
+        var btn = document.querySelector('.start button')
+        var start = document.querySelector('.start')
+        btn.onclick = function () {
+            start.style.visibility = 'hidden'
+        }
+    </script>
+</body>
+
+</html>

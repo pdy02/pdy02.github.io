@@ -19,3 +19,23 @@ document.body.onscroll = function(event){
         $("section.nav").removeClass("active")
     }
 }
+
+$.get("/public/jsCase.json",function(res){
+    // console.log(res[0]);
+    let {main} = res[0];
+    console.log(main);
+    $("#jsCase").find(".main ul").append(
+        main.map((item)=>{
+            return ` <li>
+                        <a class="card" href="${item.url}">
+                            <div class="img">
+                                <div class="img-bg" style="background-image:url('${item.imgurl}');"></div>
+                            </div>
+                            <div class="info">
+                                ${item.text}
+                            </div>
+                        </a>
+                    </li>`
+        })
+    )
+})

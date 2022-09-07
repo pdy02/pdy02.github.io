@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>找色块</title>
+    <style>
+        :root{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+        }
+        ul{
+            margin: 0;
+            padding: 0;
+            margin: 0 auto;
+            width: 500px;
+            height: 500px;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        ul li{
+            border-radius: 50%;
+            /* opacity: ; */
+            /* background-color: aqua; */
+        }
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <ul class="stage"></ul>
+    <script>
+        // 关卡
+        var customs = 1;
+        var h1 = document.querySelector('h1')
+        var stage = document.querySelector('ul.stage');
+        function show(leve){
+            h1.innerText = '关卡' + leve;
+            // 删除原有
+            stage.innerHTML = ''
+            // 随机颜色
+            var color = '#' + (Math.random() * (leve + 2)).toString(16).slice(-6)
+            // console.log(color);
+            for(var i = 0; i < Math.pow(leve + 2, 2); i++){
+                var node = document.createElement('li');
+                node.style.width = 500 / (leve+2) + 'px';
+                node.style.backgroundColor = color;
+                stage.appendChild(node)
+            }
+
+            // 随机圆点
+            var index = Math.floor(Math.random() * stage.children.length)
+            console.log(index,stage.children[index]);
+            if(leve>0){
+                stage.children[index].style.opacity = '0.7'
+            }else if(leve > 9){
+                stage.children[index].style.opacity = '0.8'
+            }else if(leve > 19){
+                stage.children[index].style.opacity = '0.9'
+            }else{
+                stage.children[index].style.opacity = '0.95'
+            }
+            stage.children[index].onclick = function(){
+                customs++;
+                show(customs)
+            }
+        }
+        show(customs);
+    </script>
+</body>
+</html>

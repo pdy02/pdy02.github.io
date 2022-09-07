@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒计时</title>
+    <style>
+        :root {
+            height: 100%;
+
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-image: url(./img/bg.jpeg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            justify-content: center;
+            align-items: center;
+            z-index: 0;
+        }
+
+        .lop {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 166, 0, 0.467);
+            z-index: -1;
+        }
+
+        .time {
+            width: 280px;
+            display: flex;
+            justify-content: space-between;
+            /* background-color: aqua; */
+        }
+
+        .time div {
+            width: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: 600;
+            color: #fff;
+            background-color: orange;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lop"></div>
+    <div class="time">
+        <div id="r">50</div>
+        <div id="s">30</div>
+        <div id="f">20</div>
+        <div id="m">30</div>
+    </div>
+
+    <script>
+        // 获取当前月份
+        const d = new Date();
+        const [fy,mn] = [d.getFullYear(),d.getMonth()];
+        // console.log(fy,mn);
+        // 获取2022年9月1日的时间戳
+        var dat = new Date(fy, mn+2, 1, 0, 0)
+        // 获取dom
+        var rDom = document.getElementById('r')
+        var sDom = document.getElementById('s')
+        var fDom = document.getElementById('f')
+        var mDom = document.getElementById('m')
+        // var r, s, f, m;
+
+        function fnInt(num) {
+            if (num < 10) {
+                return num = `0${num}`
+            } else {
+                return num
+            }
+        }
+        function fnTime() {
+            var cur = new Date()
+            var cha = Math.ceil((dat.getTime() - cur.getTime()) / 1000) //向上取整的秒数差
+            // console.log(cha);
+
+            var miao = cha % 60
+            // console.log(miao + '秒');
+            var fen = Math.floor((cha % 3600) / 60);
+            // console.log(fen + '分');
+            var shi = Math.floor((cha % 86400) / 3600)
+            // console.log(shi + '时');
+            var ru = Math.floor(cha / 86400)
+            // console.log(ru + '日');
+            // console.log(fnInt(shi));
+            rDom.innerHTML = fnInt(ru);
+            sDom.innerHTML = fnInt(shi);
+            fDom.innerHTML = fnInt(fen);
+            mDom.innerHTML = fnInt(miao);
+        }
+        fnTime()
+        setInterval(fnTime, 1000)
+    </script>
+</body>
+
+</html>
