@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="never">
+    <title>哔哩哔哩漫画</title>
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/minireset.css/0.0.2/minireset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="head">
+            <div class="ticai">
+                <span>题材</span>
+                <ul id="styleId">
+                </ul>
+            </div>
+            <div class="diqu">
+                <span>地区</span>
+                <ul id="areaId">
+                </ul>
+            </div>
+            <div class="jindu">
+                <span>进度</span>
+                <ul id="isFinish">
+                </ul>
+            </div>
+            <div class="shoufei">
+                <span>收费</span>
+                <ul id="isFree">
+                </ul>
+            </div>
+            <div class="paixu">
+                <span>排序</span>
+                <ul id="order">
+                </ul>
+            </div>
+        </div>
+        <p class="status"></p>
+        <div class="main">
+            <!-- <div class="item" title="鬼灭之刃">
+                <img src="../04/360轮播/imgs/s2.png" alt="">
+                <h2 class="tit">鬼灭之刃</h2>
+                <div class="info">完结</div>
+            </div> -->
+        </div>
+    </div>
+    <script>
+        var styleId = ["全部", "热血", "古风", "玄幻", "奇幻", "悬疑", "都市", "历史", "武侠仙侠", "游戏竞技", "悬疑灵异", "架空", "青春", "西幻", "现代", "正能量", "科幻"]
+        var styleIndex = [-1, 999, 997, 1016, 998, 1023, 1002, 1096, 1092, 1088, 1081, 1063, 1060, 1054, 1048, 1028, 1015]
+        var areaId = ["全部", "大陆", "日本", "韩国", "其他"]
+        var areaIndex = [-1, 1, 2, 6, 5]
+        var isFinish = ["全部", "连载", "完结"]
+        var isFree = ["全部", "免费", "收费", "等就免费"]
+        var order = ["人气推荐", "更新时间", "追漫人数", "上架时间"]
+
+        function init() {
+            styleId.forEach(function (item) {
+                var li = "<li>" + item + "</li>"
+                $("#styleId").append(li)
+            })
+            areaId.forEach(function (item) {
+                var li = "<li>" + item + "</li>"
+                $("#areaId").append(li)
+            })
+            isFinish.forEach(function (item) {
+                var li = "<li>" + item + "</li>"
+                $("#isFinish").append(li)
+            })
+            isFree.forEach(function (item) {
+                var li = "<li>" + item + "</li>"
+                $("#isFree").append(li)
+            })
+            order.forEach(function (item) {
+                var li = "<li>" + item + "</li>"
+                $("#order").append(li)
+            })
+        }
+        init()
+        // 初始化高亮
+        function setAct(arr, n) {
+            arr.forEach(function (item) {
+                $(item).removeClass("act")
+            })
+            $(arr[n]).addClass("act")
+        }
+        setAct(document.querySelectorAll(".head #styleId>li"), 0)
+        setAct(document.querySelectorAll(".head #areaId>li"), 0)
+        setAct(document.querySelectorAll(".head #isFinish>li"), 0)
+        setAct(document.querySelectorAll(".head #isFree>li"), 0)
+        setAct(document.querySelectorAll(".head #order>li"), 0)
+        getfilter(-1, -1, -1, -1, 0)
+        // 点击事件  样式点击事件
+        $(".head #styleId>li").click(function () {
+            var index = $(this).index();
+            setAct(document.querySelectorAll(".head #styleId>li"), index)
+            getfilter(getAct()[0], getAct()[1], getAct()[2], getAct()[3], getAct()[4])
+        })
+        $(".head #areaId>li").click(function () {
+            var index = $(this).index();
+            setAct(document.querySelectorAll(".head #areaId>li"), index)
+            getfilter(getAct()[0], getAct()[1], getAct()[2], getAct()[3], getAct()[4])
+        })
+        $(".head #isFinish>li").click(function () {
+            var index = $(this).index();
+            setAct(document.querySelectorAll(".head #isFinish>li"), index)
+            getfilter(getAct()[0], getAct()[1], getAct()[2], getAct()[3], getAct()[4])
+        })
+        $(".head #isFree>li").click(function () {
+            var index = $(this).index();
+            setAct(document.querySelectorAll(".head #isFree>li"), index)
+            getfilter(getAct()[0], getAct()[1], getAct()[2], getAct()[3], getAct()[4])
+        })
+        $(".head #order>li").click(function () {
+            var index = $(this).index();
+            setAct(document.querySelectorAll(".head #order>li"), index)
+            getfilter(getAct()[0], getAct()[1], getAct()[2], getAct()[3], getAct()[4])
+        })
+
+        function getAct() {
+            var tmp = []
+            $(".head #styleId>li").each(function (index, item) {
+                if ($(item).hasClass("act")) {
+                    tmp.push(styleIndex[index])
+                }
+            })
+            $(".head #areaId>li").each(function (index, item) {
+                if ($(item).hasClass("act")) {
+                    tmp.push(areaIndex[index])
+                }
+            })
+            $(".head #isFinish>li").each(function (index, item) {
+                if ($(item).hasClass("act")) {
+                    tmp.push(index - 1)
+                }
+            })
+            $(".head #isFree>li").each(function (index, item) {
+                if ($(item).hasClass("act")) {
+                    tmp.push(index - 1)
+                }
+            })
+            $(".head #order>li").each(function (index, item) {
+                if ($(item).hasClass("act")) {
+                    tmp.push(index - 1)
+                }
+            })
+
+            return tmp
+        }
+        // getAct()
+
+        // 封装getJSON函数
+        function getJSON(url, callback) {
+            // 创建一个
+            var xhr = new XMLHttpRequest();
+            // 监听事件
+            xhr.onreadystatechange = function () {
+                // 4为完成, 200为成功状态码
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // JSON.parse() 将字符串转化为json格式
+                    // JSON.stringify() 将json格式的数据转化为字符串格式
+                    callback(JSON.parse(xhr.response))
+                }
+            }
+
+            // 准备好 1.GET请求 2.url:要请求的地址  3.true为异步 false为同步
+            xhr.open("GET", url, true)
+            // 发送请求
+            xhr.send()
+        }
+
+
+        // 有时候会同源策略报错,不知道为什么
+        function getfilter(style, area, isFinish, isFree, order) {
+            $(".status").text("加载中")
+            var a = new getJSON(`https://apis.netstart.cn/bcomic/ClassPage?styleId=${style}&areaId=${area}&isFinish=${isFinish}&order=${order}&pageNum=1&pageSize=39&isFree=${isFree}`, function (res) {
+                console.log(res.data);
+                $(".box .main").html("")
+                $(".status").text("")
+                res.data.forEach(function (item, index) {
+                    // item
+                    var node = ` <div class="item" title="${item.title}">
+                    <img width="190" height="253" src="${item.vertical_cover}" alt="" title="${item.title}">
+                    <h2 class="tit" title="${item.title}">${item.title}</h2>
+                    <div class="info" title="更新至${item.last_short_title}话" >更新至${item.last_short_title}话</div>
+                    </div>`
+                    $(".box .main").append(node)
+                })
+            })
+        }
+        // getfilter(-1,-1,-1,-1,0)
+
+    </script>
+</body>
+
+</html>

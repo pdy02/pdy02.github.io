@@ -1,0 +1,91 @@
+body {
+  height: 100vh;
+  background-color: #dfe7ef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.music {
+  width: 410px;
+  height: 514px;
+  background: #eef3f7;
+  box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
+  border-radius: 15px;
+  padding: 30px;
+}
+.music .ctrl {
+  display: flex;
+}
+.music .ctrl .bg {
+  width: 300px;
+  height: 300px;
+  background-image: url("../imgs/hh.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 15px;
+  flex-shrink: 0;
+  margin-left: -70px;
+  position: relative;
+  z-index: 0;
+  box-shadow: 0 20px 30px 0px rgba(0, 0, 0, 0.7);
+}
+.music .ctrl .setUp {
+  width: 125px;
+  padding-left: 20px;
+}
+.music .ctrl .setUp ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.music .ctrl .setUp ul li {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.music .ctrl .setUp ul li a {
+  color: #acb8cc;
+  font-size: 28px;
+  display: block;
+  padding: 15px;
+  position: relative;
+  z-index: 0;
+}
+.music .ctrl .setUp ul li a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: calc(50% - 35px);
+  left: calc(50% - 35px);
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  z-index: -1;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: all 0.5s;
+}
+.music .ctrl .setUp ul li a:hover {
+  color: #532ab9;
+}
+.music .ctrl .setUp ul li a:hover::after {
+  transform: scale(1);
+}
+.music .ctrl .setUp ul li:last-child a {
+  color: #ffffff;
+  padding: 0;
+}
+.music .ctrl .setUp ul li:last-child a::after {
+  display: none;
+}
+.music .ctrl .setUp ul li:last-child a i {
+  font-size: 90px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+/*# sourceMappingURL=./demo2.css.map */

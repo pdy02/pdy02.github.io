@@ -1,0 +1,114 @@
+body{
+    background-color: rgba(0, 0, 0, 0.402);
+}
+header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    .warp{
+        // width: calc(100% - 150px);
+        // margin-left: 150px;
+        padding-left: 150px;
+        padding-right: 30px;
+        background-color: lightcoral;
+        height: 40px;
+        // display: flex;
+        // align-items: center;
+        // justify-content: space-between;
+        .logo{
+            display: block;
+            min-width: 150px;
+            font-size: 32px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            
+            float: left;
+            margin-left: -100%;;
+            // position: relative;
+            // left: -150px;
+            span {
+                font-weight: 300;
+                font-family: "Poppins", cursive;
+            }
+        }
+        nav{
+            width: 100%;
+            display: flex;
+            // justify-content: space-between;
+            justify-content: space-around;
+            float: left;
+            ul {
+                display: flex;
+                text-transform: uppercase;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    // margin-right: 20px;
+                    padding: 0 20px;
+
+                    a {
+                        font-weight: bold;
+                        color: #fff;
+                        text-decoration: none;
+                        transition: all .3s;
+                    }
+
+                    &:hover {
+                        a {
+                            color: red;
+                        }
+                    }
+
+                    &.active {
+                        a {
+                            color: red;
+                        }
+                    }
+                }
+            }
+            form {
+                width: 253px;
+                display: flex;
+                justify-content: space-between;
+
+                input {
+                    width: 206px;
+                    height: 40.5px;
+                    border-radius: 20px 0 0 20px;
+                    border: 1px solid transparent;
+                    padding: 15px;
+                }
+
+                a {
+                    display: inline-block;
+                    width: calc(253px - 206px);
+                    height: 40.5px;
+                    background-color: red;
+                    color: #fff;
+                    text-align: center;
+                    line-height: 40.5px;
+                    font-size: 16px;
+                    border-radius: 0 20px 20px 0;
+                }
+            }
+        }
+        .icon {
+            width: 30px;
+            padding: 0;
+            text-align: end;
+            // max-width: 30px;
+            float: left;
+            margin-left:-30px;
+            // position: relative;
+            // right: -30px;
+            a {
+                font-size: 24px;
+                color: #fff;
+            }
+        }
+    }
+}

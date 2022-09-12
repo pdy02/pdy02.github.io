@@ -1,0 +1,68 @@
+body,
+ul {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+}
+ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  list-style: none;
+}
+ul li {
+  width: calc(100% / 12);
+  height: 100%;
+  position: relative;
+  text-align: center;
+  font-size: 60px;
+  font-style: italic;
+  color: #fff;
+  font-weight: bold;
+}
+ul li > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+ul li > div:nth-child(1) {
+  background-color: #80a492;
+  z-index: 1;
+  animation: w1 0.6s 0s linear forwards;
+}
+ul li > div:nth-child(2) {
+  background-color: #422517;
+  z-index: 2;
+  animation: w1 0.6s 0.7s linear forwards;
+}
+ul li > div:nth-child(3) {
+  background-color: #c12c1f;
+  z-index: 3;
+  animation: w1 0.6s 1.4s linear forwards;
+}
+ul li > div:nth-child(4) {
+  background-color: #dd7694;
+  z-index: 4;
+  animation: w1 0.6s 2.1s linear forwards;
+}
+ul li > div:nth-child(5) {
+  background-color: #12264f;
+  z-index: 5;
+  animation: w1 0.6s 2.7s linear forwards;
+}
+@keyframes w1 {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=./style.css.map */

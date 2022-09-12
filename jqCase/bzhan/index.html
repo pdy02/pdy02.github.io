@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b站视频预览</title>
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .box {
+            width: 480px;
+            height: 270px;
+            margin: 50px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: aqua;
+            position: relative;
+            /* background-image: url(./img/3.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center; */
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            background-image: url(./img/1.jpg);
+            background-repeat: no-repeat;
+            background-size: 4800px 2700px;
+            background-position: calc(-480px * 0) calc(-270px * 0);
+        }
+
+        .lop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+        }
+
+        .lop span {
+            display: block;
+            color: #fff;
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            font-size: 30px;
+        }
+
+        .lop .bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            /* padding: 0 20px; */
+        }
+
+        .bar .progress {
+            width: 460px;
+            height: 5px;
+            margin: 0 auto;
+            background-color: gray;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress .act {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            width: 10%;
+            height: 5px;
+        }
+
+        .lop .dm {
+            width: 100%;
+            height: 100px;
+            position: absolute;
+            top: 40px;
+        }
+
+        .dm p {
+            /* 不换行 */
+            word-break: keep-all;
+            white-space: nowrap;
+            position: absolute;
+            right: 0;
+            height: 50px;
+            color: #fff;
+            font-size: 40px;
+            padding: 0;
+            margin: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="main">
+
+        </div>
+        <div class="lop">
+            <span class="time">23:22</span>
+            <div class="dm">
+                <!-- <p>章鱼哥还是没有胜过强风暴雨</p> -->
+                <!-- <p>日本裁判</p> -->
+            </div>
+            <div class="bar">
+                <div class="progress">
+                    <div class="act"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var pvideo = {
+            duration: 1303,
+            img_x_len: 10,
+            img_y_len: 10,
+            img_x_size: 480,
+            img_y_size: 270,
+            image: [
+                "//bimp.hdslb.com/videoshotpvhdboss/486142478_dc4dcb-0001.jpg",
+                "//bimp.hdslb.com/videoshotpvhdboss/486142478_dc4dcb-0002.jpg",
+            ],
+            index: [
+                0, 8, 14, 20, 25, 31, 39, 50, 61, 67, 73, 80, 87, 93, 104, 116, 126, 132, 138, 144, 152, 159, 170, 177, 186,
+                196, 207, 215, 224, 231, 238, 244, 249, 255, 260, 265, 271, 278, 283, 290, 297, 303, 311, 319, 330, 335, 350,
+                360, 365, 372, 383, 390, 401, 406, 411, 421, 428, 434, 444, 450, 457, 467, 472, 481, 487, 497, 502, 514, 520,
+                534, 542, 547, 555, 562, 568, 575, 581, 587, 592, 598, 605, 610, 615, 621, 633, 642, 650, 658, 668, 677, 690,
+                696, 702, 709, 715, 720, 733, 740, 746, 751, 759, 767, 776, 782, 790, 798, 804, 814, 826, 833, 840, 850, 856,
+                863, 872, 878, 886, 896, 903, 911, 918, 929, 937, 948, 953, 959, 965, 973, 979, 985, 994, 1001, 1015, 1022,
+                1028, 1034, 1040, 1047, 1059, 1064, 1071, 1077, 1084, 1090, 1099, 1105, 1111, 1121, 1130, 1139, 1150, 1156,
+                1162, 1171, 1178, 1184, 1191, 1197, 1203, 1210, 1216, 1221, 1228, 1233, 1242, 1250, 1260, 1272, 1282, 1292,
+                1297,
+            ],
+        };
+        var dm = [
+            "章鱼哥还是没有胜过强风暴雨(doge)",
+            "日本裁判",
+            "日本裁判",
+            "海绵宝宝笑死我了",
+            "黑人小哥",
+            "堡垒之夜",
+            "最喜欢的一集",
+            "最喜欢的一集",
+            "喜欢",
+            "我怎么觉得派大星这个配音我在神奇宝贝里听过",
+            "我看见你了",
+            "但凡章鱼哥早点回去都不至于这样",
+            "这……这我还真有可能“模仿”",
+            "为什么非要执着于台配或者央配呢",
+            "派总依旧稳定输出",
+            "包租公～",
+            "为什么台配的海绵宝宝跟低能儿似的",
+            "井字游戏，其实可以先手必胜的",
+            "我小时候就看的台配",
+            "终于找到了",
+        ];
+        // 获取盒子宽
+        var boxWidth = $(".box").width()
+
+        // 当前第几张图片
+        var imgIndex = 0
+        // 初始化
+        // $(".box").find(".lop").hide()
+        // $(".box").find(".lop").css("opacity","0")
+        // 移动事件
+        $(".box").mousemove(function () {
+            var x = event.offsetX; //获取鼠标偏移量
+            // 获取百分比
+            var ratio = ((x / boxWidth) * 100).toFixed(2)
+            $(".box").find(".lop").show()
+            // $(".box").find(".lop").css("opacity","1")
+            $(".box").find(".act").css("width", ratio + "%")
+
+            // 当前鼠标的滑动时在第几秒 seconds
+            var seconds = Math.floor(pvideo.duration * (ratio / 100))
+            // 遍历index数组,172张图片
+            pvideo.index.forEach(function (item, index, arr) {
+                // console.log(index);
+                // item表示第几秒换图(图秒), index 代表这是第几张图
+                if (seconds >= item) { //鼠标滑动的秒数大于图秒时,切换背景图
+                    // console.log(index);
+                    if (index < 100) {  // index<100时是 第一张精灵图,index从0开始
+                        // index对应的图片在精灵图的第几行列
+                        var a = Math.floor(index / 10) // 第几行 0开始
+                        var b = Math.floor(index % 10) // 第几列 0开始
+
+                        // 设置样式
+                        $(".box").find(".main").css({
+                            backgroundImage: "url(./img/1.jpg)",
+                            backgroundPosition: "calc(-" + pvideo.img_x_size + "px * " + b + ") calc(-" + pvideo.img_y_size + "px * " + a + ")",
+                            backgroundSize: pvideo.img_x_len * pvideo.img_x_size + "px " + pvideo.img_y_len * pvideo.img_y_size + "px"
+
+                        })
+                    } else { // 当index>=100时, 切换第二张精灵图
+                        // 表示在第二张精灵图的第几张图
+                        var newIndex = index - 100;
+
+                        var a = Math.floor(newIndex / 10)
+                        var b = Math.floor(newIndex % 10)
+
+                        $(".box").find(".main").css({
+                            backgroundImage: "url(./img/2.jpg)",
+                            backgroundPosition: "calc(-" + pvideo.img_x_size + "px * " + b + ") calc(-" + pvideo.img_y_size + "px * " + a + ")",
+                            backgroundSize: pvideo.img_x_len * pvideo.img_x_size + "px " + pvideo.img_y_len * pvideo.img_y_size + "px"
+                        })
+                    }
+                }
+            })
+        })
+
+        // 移出事件
+        $(".box").mouseout(function () {
+            fnlop()
+        })
+        // 初始化
+        function fnlop() {
+            // 隐藏遮罩
+            $(".box").find(".lop").hide()
+            // 设置默认样式
+            $(".box").find(".main").css({
+                backgroundImage: "url(./img/3.webp)",
+                backgroundPosition: "0 0",
+                backgroundSize: "100%"
+            })
+        }
+        fnlop()
+
+
+
+        // 弹幕功能
+        var dmDom = document.querySelector(".box .lop .dm")
+        // 记录上一个位置
+        var isTop = 0;
+        var reg = /[0-9]{1,}/g
+        function Bullet(txt, speed, x) {
+            this.txt = txt
+            // this.y = Math.floor(Math.random() * 2)
+            this.y = isTop
+            if (isTop) {
+                isTop = 0
+            } else {
+                isTop = 1
+            }
+            
+            // console.log(this.y);
+            this.x = x
+            this.speed = speed
+
+            // 创建插入
+            this.node = document.createElement('p')
+            this.node.innerText = this.txt
+            this.node.style.top = this.y * 50 + "px"
+            this.node.style.left = this.x + "px"
+
+            dmDom.appendChild(this.node)
+
+            var size = getComputedStyle(this.node).fontSize
+            var patt1=new RegExp("[0-9]+");
+            var ns = patt1.exec(size)[0]
+            // console.log(ns);
+            // 自身宽
+            this.width = Number(ns) * this.txt.length
+
+            
+            Bullet.prototype.move = function () {
+                this.x -= this.speed
+                this.node.style.left = this.x + "px"
+            }
+        }
+        // var b = new Bullet("日本裁判", 0.5)
+        var dmArr = []
+        var dmIndex = 0
+        function init() {
+
+            for (var i = 0; i < 1; i++) {
+                var rand = Math.random() * 1 + 0.5
+                // if(i == 0){}
+                // var b = new Bullet(dm[i], rand, (480 + 240 * i))
+                var b = new Bullet(dm[i], 0.5, 480)
+                dmArr.push(b)
+                dmIndex++
+            }
+        }
+        init()
+
+        var flag = false
+        $(".box").find(".main").mouseover(function(){
+            setTimeout(function(){
+                flag = true
+            },1500)
+        })
+        setInterval(function () {
+            if(!flag){return}
+            dmArr.forEach(function (item) {
+                item.move()
+
+                // if (item.x <= -1000 && item) {
+                if (item.x + item.width <= 0 && item) {
+                    // 删除dom
+                    dmDom.removeChild(dmArr[0].node)
+                    // 删除实例对象
+                    dmArr.splice(0, 1)
+                }
+            })
+            var juli = dmArr[dmArr.length - 1].x + dmArr[dmArr.length - 1].width
+            if (dmArr.length && juli <= 480) {
+                var rand = Math.random() * 0.5 + 0.5
+                var b = new Bullet(dm[dmIndex],rand, 480)
+                dmArr.push(b)
+                dmIndex++
+                if (dmIndex >= dm.length) {
+                    dmIndex = 4
+                }
+            }
+        }, 1000 / 60)
+
+
+    </script>
+</body>
+
+</html>

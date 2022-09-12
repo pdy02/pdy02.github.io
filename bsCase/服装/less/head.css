@@ -1,0 +1,92 @@
+body {
+  background-color: rgba(0, 0, 0, 0.402);
+}
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+header .warp {
+  padding-left: 150px;
+  padding-right: 30px;
+  background-color: lightcoral;
+  height: 40px;
+}
+header .warp .logo {
+  display: block;
+  min-width: 150px;
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  float: left;
+  margin-left: -100%;
+}
+header .warp .logo span {
+  font-weight: 300;
+  font-family: "Poppins", cursive;
+}
+header .warp nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  float: left;
+}
+header .warp nav ul {
+  display: flex;
+  text-transform: uppercase;
+}
+header .warp nav ul li {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+header .warp nav ul li a {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+header .warp nav ul li:hover a {
+  color: red;
+}
+header .warp nav ul li.active a {
+  color: red;
+}
+header .warp nav form {
+  width: 253px;
+  display: flex;
+  justify-content: space-between;
+}
+header .warp nav form input {
+  width: 206px;
+  height: 40.5px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid transparent;
+  padding: 15px;
+}
+header .warp nav form a {
+  display: inline-block;
+  width: calc(253px - 206px);
+  height: 40.5px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  line-height: 40.5px;
+  font-size: 16px;
+  border-radius: 0 20px 20px 0;
+}
+header .warp .icon {
+  width: 30px;
+  padding: 0;
+  text-align: end;
+  float: left;
+  margin-left: -30px;
+}
+header .warp .icon a {
+  font-size: 24px;
+  color: #fff;
+}
+/*# sourceMappingURL=./head.css.map */

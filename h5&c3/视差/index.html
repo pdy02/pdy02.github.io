@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动视差</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <img src="./imgs/bg.jpg" id="bg" alt="" />
+        <img src="./imgs/moon.png" alt="" id="moon">
+        <img src="./imgs/mountain.png" alt="" id="mountain">
+        <img src="./imgs/road.png" alt="" id="road" />
+        <h2 >Moon Light</h2>
+    </div>
+
+    <script>
+        // $(document.body).on("scroll",function(){
+        //     console.log(13);
+        // })
+        document.body.onscroll = function(){
+            let value = scrollY;
+            console.log(value);
+            $("#bg").css('top',`${value * 0.5}px`);
+            $("#moon").css('left',`-${value * 0.5}px`)
+            $("#mountain").css('top',`-${value * 0.15}px`)
+            $("#road").css('top',`${value * 0.15}px`)
+            $('h2').css('top',`${value * 2}px`)
+        }
+    </script>
+</body>
+</html>

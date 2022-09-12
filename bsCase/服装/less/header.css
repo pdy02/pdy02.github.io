@@ -1,0 +1,173 @@
+body {
+  background-color: rgba(0, 0, 0, 0.482);
+}
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  padding: 30px 0;
+}
+header .row {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+header .row .logo {
+  display: block;
+  min-width: 150px;
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+header .row .logo span {
+  font-weight: 300;
+  font-family: "Poppins", cursive;
+}
+header .row nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+}
+header .row nav ul {
+  display: flex;
+  text-transform: uppercase;
+}
+header .row nav ul li {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+header .row nav ul li a {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+header .row nav ul li:hover a {
+  color: red;
+}
+header .row nav ul li.active a {
+  color: red;
+}
+header .row nav form {
+  width: 253px;
+  display: flex;
+  justify-content: space-between;
+}
+header .row nav form input {
+  width: 206px;
+  height: 40.5px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid transparent;
+  padding: 15px;
+}
+header .row nav form a {
+  display: inline-block;
+  width: calc(253px - 206px);
+  height: 40.5px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  line-height: 40.5px;
+  font-size: 16px;
+  border-radius: 0 20px 20px 0;
+}
+header .row .icon {
+  padding: 0;
+  text-align: end;
+  max-width: 30px;
+}
+header .row .icon a {
+  font-size: 24px;
+  color: #fff;
+}
+header .row .ctrl {
+  display: none;
+  padding: 0;
+}
+header .row .ctrl .bars {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 10px;
+}
+header .row .ctrl .bars a {
+  font-size: 24px;
+  color: #fff;
+}
+header .row .small {
+  display: none;
+  padding: 20px 15px;
+  background-color: #fff;
+  text-align: center;
+}
+header .row .small ul {
+  text-transform: uppercase;
+}
+header .row .small ul li {
+  padding: 10px 0;
+}
+header .row .small ul li a {
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+header .row .small ul li:hover a {
+  color: red;
+}
+header .row .small ul li.active a {
+  color: red;
+}
+header .row .small form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+header .row .small form input {
+  width: 100%;
+  height: 40.5px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid transparent;
+  padding: 15px;
+  border: 1px solid rgba(128, 128, 128, 0.608);
+}
+header .row .small form a {
+  display: inline-block;
+  width: calc(253px - 206px);
+  height: 40.5px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  line-height: 40.5px;
+  font-size: 16px;
+  border-radius: 0 20px 20px 0;
+}
+header.act {
+  background-color: #fff;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+}
+header.act .row .logo a {
+  color: #060606;
+}
+header.act .row nav form input {
+  border: 1px solid rgba(128, 128, 128, 0.733);
+}
+header.act .row a {
+  color: #060606;
+}
+@media (max-width: 992px) {
+  header .row .nav {
+    display: none;
+  }
+  header .row .ctrl {
+    display: block;
+  }
+}
+/*# sourceMappingURL=./header.css.map */

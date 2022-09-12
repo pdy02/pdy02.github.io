@@ -1,0 +1,283 @@
+body {
+  margin: 0;
+}
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.bar {
+  width: 100%;
+  height: 50px;
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+}
+.bar .container {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.bar .container .logo {
+  width: 300px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: #fff;
+}
+.bar .container .logo img {
+  width: 220px;
+  height: 40px;
+}
+.bar .container ul.forum {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bar .container ul.forum li a {
+  color: #cccccc;
+  text-decoration: none;
+}
+.swiper {
+  width: 100%;
+  height: 100vh;
+  --swiper-pagination-color: #cccccc;
+  /* 两种都可以 */
+}
+.swiper .swiper-pagination-bullet {
+  background-color: #fff;
+  cursor: pointer;
+}
+.swiper .swiper-wrapper .swiper-slide {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+.swiper .swiper-wrapper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) {
+  background-image: url("../imgs/1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .lop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0404057a;
+  z-index: 0;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) img.sate {
+  width: 100px;
+  height: auto;
+  position: absolute;
+  top: 45%;
+  left: 65%;
+  animation: sata 20s infinite alternate;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) img.planet1 {
+  width: 350px;
+  height: auto;
+  position: absolute;
+  top: 58%;
+  left: 63%;
+  animation: planet1 10s infinite alternate;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) img.planet2 {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  top: 18%;
+  left: 20%;
+  animation: planet1 10s infinite alternate;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .main {
+  width: 100%;
+  position: absolute;
+  top: 150px;
+  left: 0;
+  color: #fff;
+  text-align: center;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .main h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .main p {
+  font-size: 1.2rem;
+  color: #cccccc;
+  margin-bottom: 20px;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .main .btn button {
+  width: 160px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.509);
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .main .btn button:nth-child(2) {
+  background-color: #fff;
+  color: #000;
+  position: relative;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .main .btn button:nth-child(2) img {
+  width: 20px;
+  height: auto;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .main .btn button:nth-child(2) p {
+  position: absolute;
+  right: -20px;
+  top: -10px;
+  width: 35px;
+  height: 15px;
+  line-height: 15px;
+  color: #fff;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 10px 0 10px 0;
+  background-color: #ff5959;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) > span {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 30px 5px #ffffff;
+  position: absolute;
+  animation: starShow 2s infinite alternate linear;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .p1 {
+  top: 85%;
+  left: 30%;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .p2 {
+  top: 65%;
+  left: 20%;
+  animation-delay: 1s;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .p3 {
+  top: 55%;
+  left: 25%;
+  animation-delay: 1.5s;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(1) .p3 {
+  top: 50%;
+  left: 20%;
+  animation-delay: 2s;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(5) .footer {
+  width: 100%;
+  height: 120px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 22px;
+  padding-top: 38px;
+  background-color: #000;
+  color: #4A4A4A;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(5) .footer a {
+  color: #4A4A4A;
+}
+.swiper .swiper-wrapper .swiper-slide:nth-child(5) .footer a img {
+  width: 20px;
+  height: 20px;
+}
+.swiper .swiper-wrapper .swiper-slide video {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.swiper .swiper-wrapper .swiper-slide .warp {
+  color: #fff;
+  width: 50%;
+  min-width: 400px;
+  position: relative;
+  left: 18%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 4s;
+}
+.swiper .swiper-wrapper .swiper-slide .warp h2 {
+  font-size: 60px;
+  line-height: 70px;
+}
+.swiper .swiper-wrapper .swiper-slide .warp .line {
+  width: 28px;
+  height: 3px;
+  border-radius: 3px;
+  background-color: #5E5E5E;
+  margin: 20px 0;
+}
+.swiper .swiper-wrapper .swiper-slide .warp p {
+  font-size: 36px;
+}
+.swiper .swiper-wrapper .swiper-slide .warp span {
+  display: block;
+  font-size: 16px;
+  margin: 12px 0 50px;
+}
+.swiper .swiper-wrapper .swiper-slide .warp a {
+  display: block;
+  width: 200px;
+  height: 48px;
+  background-image: url("../imgs/btn.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-position: 0 0;
+}
+.swiper .swiper-wrapper .swiper-slide .warp a:hover {
+  background-position: -200px 0;
+}
+@keyframes sata {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-20deg) translate(0, 10px);
+  }
+}
+@keyframes starShow {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes planet1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 30px);
+  }
+}
+/*# sourceMappingURL=./style.css.map */

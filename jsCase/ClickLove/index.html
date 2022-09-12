@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击爱心</title>
+    <style>
+        :root{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            margin: 0;
+        }
+        .box{
+            width: 100%;
+            /* width: 1920px; */
+            height: 100%;
+            background-color: gray;
+            position: relative;
+        }
+        .box img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+    </div>
+    <script>
+        // 大小随机
+        // 出现位置随机
+        // 点击爱心消失
+        // 点击不是爱心则停止
+        // 获取可视区域大小
+        var x = innerWidth;
+        var y = innerHeight;
+        // console.log(x,y);
+        document.querySelector('.box').onclick = function(){
+            if(event.target === this){
+                alert('你点击的不是爱心');
+                clearInterval(id);
+            }else{
+                this.removeChild(event.target)
+            }
+        }
+        var id = setInterval(function(){
+             // 大小随机
+             var imgWidth = Math.floor(Math.random() * 4 +1)
+            // 位置随机 
+            var top = Math.floor(Math.random() * (y - (imgWidth*50)));
+            var left = Math.floor(Math.random() * (x - (imgWidth*50)));
+            var img = document.createElement('img')
+            img.src = './aixin.jpg'; 
+            img.width = imgWidth * 50; //大小
+            img.style.top = top + 'px';
+            img.style.left = left + 'px'
+            document.querySelector('.box').appendChild(img)
+        },2000)
+    </script>
+</body>
+</html>

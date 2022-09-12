@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./less/style.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body>
+    <ul>
+        <li>
+            <div class="x1"></div>
+            <div class="x2"></div>
+            <div class="x3"></div>
+            <div class="x4"></div>
+            <div class="x5"></div>
+        </li>
+        <li>
+            <div class="x1"></div>
+            <div class="x2"></div>
+            <div class="x3"></div>
+            <div class="x4"></div>
+            <div class="x5"></div>
+        </li>
+        <li>
+            <div class="x1">大</div>
+            <div class="x2">大</div>
+            <div class="x3">大</div>
+            <div class="x4">大</div>
+            <div class="x5">大</div>
+        </li>
+        <li>
+            <div class="x1">家</div>
+            <div class="x2">家</div>
+            <div class="x3">家</div>
+            <div class="x4">家</div>
+            <div class="x5">家</div>
+        </li>
+        <li>
+            <div class="x1">好</div>
+            <div class="x2">好</div>
+            <div class="x3">好</div>
+            <div class="x4">好</div>
+            <div class="x5">好</div>
+        </li>
+        <li>
+            <div class="x1"></div>
+            <div class="x2">我</div>
+            <div class="x3">我</div>
+            <div class="x4">我</div>
+            <div class="x5">我</div>
+        </li>
+        <li>
+            <div class="x1"></div>
+            <div class="x2"></div>
+            <div class="x3">叫</div>
+            <div class="x4">叫</div>
+            <div class="x5">叫</div>
+        </li>
+        <li>
+            <div class="x1"></div>
+            <div class="x2"></div>
+            <div class="x3"></div>
+            <div class="x4">D</div>
+            <div class="x5">D</div>
+        </li>
+        <li>
+            <div class="x1"></div>
+            <div class="x2"></div>
+            <div class="x3"></div>
+            <div class="x4">Y</div>
+            <div class="x5">Y</div>
+        </li>
+        <li>
+            <div class="x1"></div>
+            <div class="x2"></div>
+            <div class="x3"></div>
+            <div class="x4"></div>
+            <div class="x5"> <i class="fa fa-smile-o" aria-hidden="true"></i> </div>
+        </li>
+        <li>
+            <div class="x1"></div>
+            <div class="x2"></div>
+            <div class="x3"></div>
+            <div class="x4"></div>
+            <div class="x5"></div>
+        </li>
+        <li>
+            <div class="x1"></div>
+            <div class="x2"></div>
+            <div class="x3"></div>
+            <div class="x4"></div>
+            <div class="x5"></div>
+        </li>
+    </ul>
+
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $("ul").find("li .x5").each((i,ele) => {
+            // console.log(this);
+            $(ele).css("animationDelay",(2.7)+(i*0.1)+'s')
+        });
+
+    </script>
+</body>
+</html>

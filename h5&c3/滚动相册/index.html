@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动相册</title>
+</head>
+
+<body>
+    <div class="box">
+        <!-- <div class="b1">第一张</div>
+        <div class="b2">第二张</div>
+        <div class="b3">第三张</div>
+        <div class="b4">第四张</div>
+        <div class="b5">第五张</div>
+        <div class="b6">第六张</div> -->
+        <!--         <div class="b1"></div>
+        <div class="b2"></div>
+        <div class="b3"></div>
+        <div class="b4"></div>
+        <div class="b5"></div>
+        <div class="b6"></div> -->
+    </div>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.836);
+            perspective: 1500px;
+
+        }
+
+        .box {
+            margin-top: 100px;
+            width: 100px;
+            height: 100px;
+
+            position: relative;
+            /* background-color: gray; */
+            transform: rotateX(-20deg) rotateY(0deg);
+            animation: myscoll 10s infinite linear;
+
+            /* 为子元素 开启3d */
+            transform-style: preserve-3d;
+        }
+
+        .box>div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+
+        /*         .box .b1 {
+            background-color: aqua;
+            transform: rotateY(0deg) translateZ(100px);
+            background-image: url("img/1.jpg");
+        }
+
+        .box .b2 {
+            background-color: lightblue;
+
+            transform: rotateY(60deg) translateZ(100px);
+            background-image: url("img/2.png");
+
+        }
+        .box .b3 {
+            background-color: lightblue;
+
+            transform: rotateY(120deg) translateZ(100px);
+            background-image: url("img/03.png");
+
+        }
+        .box .b4 {
+            background-color: lightblue;
+
+            transform: rotateY(180deg) translateZ(100px);
+            background-image: url("img/4.png");
+
+        }
+        .box .b5 {
+            background-color: lightblue;
+
+            transform: rotateY(240deg) translateZ(100px);
+            background-image: url("img/5.png");
+
+        }
+        .box .b6 {
+            background-color: lightblue;
+
+            transform: rotateY(300deg) translateZ(100px);
+            background-image: url("img/1.jpg");
+
+        } */
+
+        @keyframes myscoll {
+            0% {
+                transform: rotateX(-20deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(-20deg) rotateY(360deg);
+            }
+        }
+    </style>
+    <script>
+        function fn(row, col) {
+            var angle = 360 / row;
+            for (let j = 0; j < col; j++) {
+                for (let i = 0; i < row; i++) {
+                    var imgNode = document.createElement("div")
+                    imgNode.style.transform = `rotateY(${i * angle}deg) translateZ(700px) translateY(${j*120}px)`
+                    imgNode.style.backgroundImage = " url('img/1.jpg')"
+                    document.querySelector(".box").appendChild(imgNode)
+                }
+            }
+            // for (let i = 0; i < row; i++) {
+            //     var imgNode = document.createElement("div")
+            //     imgNode.style.transform = `rotateY(${i * angle}deg) translateZ(350px)`
+            //     imgNode.style.backgroundImage = " url('img/1.jpg')"
+            //     document.querySelector(".box").appendChild(imgNode)
+            // }
+            // for (let i = 0; i < row; i++) {
+            //     var imgNode = document.createElement("div")
+            //     imgNode.style.transform = `rotateY(${i * angle}deg) translateZ(350px) translateY(120px)`
+            //     imgNode.style.backgroundImage = " url('img/1.jpg')"
+            //     document.querySelector(".box").appendChild(imgNode)
+            // }
+        }
+        fn(40,4)
+
+        // document.querySelector(".box")
+    </script>
+</body>
+
+</html>

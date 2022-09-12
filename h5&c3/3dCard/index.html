@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d卡片</title>
+    <link rel="stylesheet" href="./less/chart.css">
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="card">
+        <!-- <p>card</p> -->
+        <h2>STEPS</h2>
+        <h3>THIS WEEK</h3>
+        <ul>
+            <!-- <li>M</li>
+            <li>T</li>
+            <li>W</li>
+            <li>T</li>
+            <li>F</li>
+            <li>S</li>
+            <li>S</li> -->
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <p>93,000</p>
+    </div>
+    <script>
+        var word = ["M","T","W","T","F","S","S"]
+        $(".card").click(function(){
+            $(this).toggleClass("act")
+            // console.log($(this).hasClass("act"));
+            if($(this).hasClass("act")){
+                $(".card ul>li").each(function(index,item){
+                    // item.text(word[index])
+                    // console.log(item);
+                    item.innerHTML = word[index]
+                    console.log(item.innerHTML);
+                })
+            }else{
+                setTimeout(function(){
+                    $(".card ul>li").each(function(index,item){
+                        // item.innerText = " "
+                        $(item).text("")
+                        // console.log(item.innerText);
+                    })
+                },500)
+            }
+        })
+    </script>
+</body>
+</html>

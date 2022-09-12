@@ -178,35 +178,42 @@ section#layout .main ul li:nth-child(2) .card .img .img-bg {
 section#layout .main ul li:nth-child(3) .card .img .img-bg {
   background-image: url("../imgs/layoutImgs/layout3.png");
 }
-section#jsCase {
+section#jsCase,
+section#jqCase {
   width: 1200px;
   margin: 50px auto;
   padding: 20px 0;
 }
-section#jsCase .title {
+section#jsCase .title,
+section#jqCase .title {
   padding-left: 20px;
 }
-section#jsCase .main ul {
+section#jsCase .main ul,
+section#jqCase .main ul {
   display: flex;
   flex-wrap: wrap;
 }
-section#jsCase .main ul li {
+section#jsCase .main ul li,
+section#jqCase .main ul li {
   width: 33.33%;
   padding: 20px 20px;
   box-sizing: border-box;
 }
-section#jsCase .main ul li a.card {
+section#jsCase .main ul li a.card,
+section#jqCase .main ul li a.card {
   display: block;
   border-radius: 15px;
   cursor: pointer;
   padding: 30px;
   box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
 }
-section#jsCase .main ul li a.card .img {
+section#jsCase .main ul li a.card .img,
+section#jqCase .main ul li a.card .img {
   border-radius: 15px;
   overflow: hidden;
 }
-section#jsCase .main ul li a.card .img .img-bg {
+section#jsCase .main ul li a.card .img .img-bg,
+section#jqCase .main ul li a.card .img .img-bg {
   width: 100%;
   height: 160px;
   background-repeat: no-repeat;
@@ -214,12 +221,120 @@ section#jsCase .main ul li a.card .img .img-bg {
   background-size: cover;
   transition: all 0.3s;
 }
-section#jsCase .main ul li a.card .info {
+section#jsCase .main ul li a.card .info,
+section#jqCase .main ul li a.card .info {
   text-align: center;
   font-size: 24px;
   color: rgba(0, 0, 0, 0.605);
 }
-section#jsCase .main ul li a.card:hover .img .img-bg {
+section#jsCase .main ul li a.card:hover .img .img-bg,
+section#jqCase .main ul li a.card:hover .img .img-bg {
+  transform: scale(1.2);
+}
+section#bs,
+section#jqCase {
+  width: 1200px;
+  margin: 50px auto;
+  padding: 20px 0;
+}
+section#bs .title,
+section#jqCase .title {
+  padding-left: 20px;
+}
+section#bs .main ul,
+section#jqCase .main ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+section#bs .main ul li,
+section#jqCase .main ul li {
+  width: 33.33%;
+  padding: 20px 20px;
+  box-sizing: border-box;
+}
+section#bs .main ul li a.card,
+section#jqCase .main ul li a.card {
+  display: block;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 30px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+}
+section#bs .main ul li a.card .img,
+section#jqCase .main ul li a.card .img {
+  border-radius: 15px;
+  overflow: hidden;
+}
+section#bs .main ul li a.card .img .img-bg,
+section#jqCase .main ul li a.card .img .img-bg {
+  width: 100%;
+  height: 160px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.3s;
+}
+section#bs .main ul li a.card .info,
+section#jqCase .main ul li a.card .info {
+  text-align: center;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.605);
+}
+section#bs .main ul li a.card:hover .img .img-bg,
+section#jqCase .main ul li a.card:hover .img .img-bg {
+  transform: scale(1.2);
+}
+section#hc,
+section#jqCase {
+  width: 1200px;
+  margin: 50px auto;
+  padding: 20px 0;
+}
+section#hc .title,
+section#jqCase .title {
+  padding-left: 20px;
+}
+section#hc .main ul,
+section#jqCase .main ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+section#hc .main ul li,
+section#jqCase .main ul li {
+  width: 33.33%;
+  padding: 20px 20px;
+  box-sizing: border-box;
+}
+section#hc .main ul li a.card,
+section#jqCase .main ul li a.card {
+  display: block;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 30px;
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3);
+}
+section#hc .main ul li a.card .img,
+section#jqCase .main ul li a.card .img {
+  border-radius: 15px;
+  overflow: hidden;
+}
+section#hc .main ul li a.card .img .img-bg,
+section#jqCase .main ul li a.card .img .img-bg {
+  width: 100%;
+  height: 160px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.3s;
+}
+section#hc .main ul li a.card .info,
+section#jqCase .main ul li a.card .info {
+  text-align: center;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.605);
+}
+section#hc .main ul li a.card:hover .img .img-bg,
+section#jqCase .main ul li a.card:hover .img .img-bg {
   transform: scale(1.2);
 }
 /*# sourceMappingURL=./style.css.map */

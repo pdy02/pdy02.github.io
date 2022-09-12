@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三级联动</title>
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background-color: #f7f7f9;
+            display: flex;
+            justify-content: center;
+        }
+
+        ul {
+            background-color: #fff;
+            /* box-shadow: 0 0 10px 0 rgba(128, 128, 128, 0.356); */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 300px;
+            margin-right: 15px;
+            margin-top: 50px;
+
+            height: 500px;
+            overflow: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .prov {
+            display: flex;
+        }
+
+        ul>li {
+            width: 100%;
+            height: 30px;
+            padding-left: 20px;
+            padding-right: 20px;
+            box-sizing: border-box;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* border: 1px solid gray; */
+            border-bottom: 1px solid rgba(128, 128, 128, 0.181);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        ul>li:hover {
+            background-color: rgba(128, 128, 128, 0.25);
+        }
+
+        .act {
+            font-weight: bold;
+            color: #5092d8;
+            background-color: rgba(128, 128, 128, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="prov">
+            <ul class="prov-list">
+                <!-- <li></li> -->
+            </ul>
+            <ul class="city-list">
+                <!-- <li>dangshan</li> -->
+            </ul>
+            <ul class="urban-list">
+                <!-- <li>dangshan</li> -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        var provList;
+        $.ajax({
+            async: true, // 同步异步
+            url: "./prov-county.json", success: function (res) {
+                console.log(res);
+                provList = []
+                res.forEach(function (item, index) {
+                    // 判断两位数
+                    if (parseInt(item).toString().length === 2) {
+                        var obj = {
+                            id: parseInt(item),
+                            provName: item.slice(3),
+                            city: []
+                        }
+                        provList.push(obj)
+                    }
+                })
+                // 判断四位数
+                res.forEach(function (item) {
+                    if (parseInt(item).toString().length === 4) {
+                        var a = parseInt(item).toString().slice(0, 2)
+                        provList.forEach(function (val) {
+                            if (val.id == a) {
+                                // console.log(a, val, item);
+                                var obj = {
+                                    id: parseInt(item),
+                                    cityName: item.slice(5),
+                                    urban: []
+                                }
+                                val.city.push(obj)
+                            }
+                        })
+                    }
+                })
+                // 判断六位数
+                res.forEach(function (item) {
+                    if (parseInt(item).toString().length === 6) {
+                        var a = parseInt(item).toString().slice(0, 4);
+                        provList.forEach(function (c) {
+                            c.city.forEach(function (val) {
+                                if (val.id == a) {
+                                    var obj = {
+                                        id: parseInt(item),
+                                        urbanName: item.slice(7)
+                                    }
+                                    val.urban.push(obj)
+                                }
+                            })
+                        })
+                    }
+                })
+                provList.forEach(function (item) {
+                    item.city.sort(function (a, b) {
+                        return a.id - b.id
+                    })
+                    item.city.forEach(function (val) {
+                        val.urban.sort(function (a, b) {
+                            return a.id - b.id
+                        })
+                    })
+                })
+            }
+        });
+        // console.log(provList);
+        // 添加
+        $(document).ajaxStop(function(){
+            provList.forEach(function (item) {
+                var li = document.createElement("li")
+                li.innerHTML = item.provName
+                li.setAttribute("data-index", item.id)
+                $("ul.prov-list").append(li)
+            })
+        })
+        // 省
+        $("ul.prov-list").click(function () {
+            $("ul.city-list").html("");
+            $("ul.urban-list").html("");
+            provList.forEach(function (item) {
+                if ($(event.target).data("index") == item.id) {
+                    $(event.target).addClass("act").siblings().removeClass("act")
+                    item.city.forEach(function (val) {
+                        var li = `<li data-index="${val.id}">${val.cityName}</li>`
+                        $("ul.city-list").append(li)
+                    })
+                }
+            })
+        })
+
+        // 市
+        $("ul.city-list").click(function () {
+            provList.forEach(function (item) {
+                item.city.forEach(function (val) {
+                    if ($(event.target).data("index") == val.id) {
+                        $(event.target).addClass("act").siblings().removeClass("act")
+                        $("ul.urban-list").html("")
+                        val.urban.forEach(function (e) {
+                            var li = `<li data-index="${e.id}">${e.urbanName}</li>`
+                            $("ul.urban-list").append(li)
+                        })
+                    }
+                })
+            })
+        })
+        $("ul.urban-list").click(function (item) {
+            provList.forEach(function (item) {
+                item.city.forEach(function (it) {
+                    it.urban.forEach(function (val) {
+                        if ($(event.target).data("index") == val.id) {
+                            $(event.target).addClass("act").siblings().removeClass("act")
+                        }
+                    })
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>无缝轮播图</title>
+  <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+  <!-- <script src="../../笔记/dyu.js"></script> -->
+  <!-- <script src="./swiper.js"></script> -->
+  <style>
+    :root {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .box {
+      width: 800px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .box .imgs {
+      width: 500%;
+      display: flex;
+      /* margin-left: -800px; */
+    }
+
+    .box div {
+      width: 50px;
+      height: 80px;
+      background-color: rgba(255, 255, 255, 0.52);
+      position: absolute;
+      /* left: 0; */
+      top: calc(50% - 40px);
+      z-index: 10;
+      font-size: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .box div:nth-child(3) {
+      right: 0;
+    }
+
+    .dots {
+      width: 150px;
+      /* margin: 0 auto; */
+      position: absolute;
+      bottom: 20px;
+      left: calc(50% - 75px);
+      display: flex;
+      justify-content: space-between;
+
+    }
+
+    .dots li {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: gray;
+      cursor: pointer;
+    }
+
+    .dots li.act {
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <ul class="imgs">
+      <li class="list-item"><img src="./img/1.jpg" alt=""></li>
+      <li class="list-item"><img src="./img/2.png" alt=""></li>
+      <li class="list-item"><img src="./img/3.png" alt=""></li>
+      <li class="list-item"><img src="./img/4.png" alt=""></li>
+      <li class="list-item"><img src="./img/1.jpg" alt=""></li>
+    </ul>
+    <div class="left"> &lt; </div>
+    <div class="right">&gt;</div>
+    <ul class="dots">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <script>
+    // 定义索引
+    var index = 0;
+
+    // 初始化
+    function init(n) {
+      // $('.imgs').css("marginLeft", n * -800 + "px" );
+      $('.imgs').animate({ "marginLeft": n * -800 + "px" }, 500, "swing")
+      $('.dots li').removeClass('act').eq(n).addClass('act')
+    }
+
+    init(index);
+
+    var rightFlag = true;
+    $('.right').click(function () {
+      if (rightFlag) {
+        rightFlag = false;
+      } else {
+        return;
+      }
+
+      index++;
+      if (index === $('.imgs li').length - 1) {
+        $('.imgs').animate({ "marginLeft": index * -800 + "px" }, 500, "swing");
+
+        setTimeout(function () {
+          index = 0;
+          $('.imgs').css("marginLeft", "0px");
+          $('.dots li').removeClass('act').eq(index).addClass('act')
+        }, 550)
+      } else {
+        init(index)
+      }
+
+      setTimeout(function () {
+        rightFlag = true;
+      }, 2000)
+    })
+
+    var leftFlag = true;
+    $(".left").click(function () {
+      // 关锁
+      if (leftFlag) {
+        leftFlag = false
+      } else {
+        return
+      }
+
+      index--;
+      // index === -1 ? index = $('.imgs li').length - 1 : index;
+      if (index === -1) {
+        // 立即跳到最后一张假图
+        index = $('.imgs li').length - 1;
+        $('.imgs').css("marginLeft", -800 * index + "px");
+
+        // 滑动到倒数第二张
+        setTimeout(function () {
+          index = $('.imgs li').length - 2;
+          $('.imgs').animate({ "marginLeft": index * -800 + "px" }, 500, "swing");
+          // 显示dot
+          $('.dots li').removeClass('act').eq(index).addClass('act')
+        }, 0)
+      } else {
+        init(index);
+      }
+
+      // 开锁
+      setTimeout(function () {
+        leftFlag = true
+      }, 2000)
+    })
+    $('.dots li').click(function () {
+      index = $(this).index()
+      init(index)
+    })
+    // setInterval(function(){
+    //     index++;
+    //     index === $('.imgs li').length ? index = 0 : index;
+    //     init(index)
+    // },1500)
+
+    var id;
+    id = setInterval(function () {
+      index++;
+      if (index === $('.imgs li').length - 1) {
+        $('.imgs').animate({ "marginLeft": index * -800 + "px" }, 500, "swing");
+        // console.log(index);
+        setTimeout(function () {
+          index = 0;
+          $('.imgs').css("marginLeft", "0px");
+          $('.dots li').removeClass('act').eq(index).addClass('act')
+        }, 550)
+      } else {
+        init(index)
+      }
+    }, 3000)
+
+    window.onblur = function () {
+      clearInterval(id)
+    };
+    window.onfocus = function () {
+      clearInterval(id);
+      id = setInterval(function () {
+        index++;
+        if (index === $('.imgs li').length - 1) {
+          $('.imgs').animate({ "marginLeft": index * -800 + "px" }, 500, "swing");
+          // console.log(index);
+          setTimeout(function () {
+            index = 0;
+            $('.imgs').css("marginLeft", "0px");
+            $('.dots li').removeClass('act').eq(index).addClass('act')
+          }, 550)
+        } else {
+          init(index)
+        }
+      }, 3000)
+    }
+  </script>
+</body>
+
+</html>

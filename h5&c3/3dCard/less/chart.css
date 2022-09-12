@@ -1,0 +1,182 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(135deg, #aac5b3, #9a7bb1);
+  perspective: 1000px;
+}
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+.card {
+  width: 400px;
+  height: 550px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../600x600.jpg");
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  transition: all 0.5s;
+  transform-origin: center center 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card p {
+  transition: inherit;
+}
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  transition: inherit;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.204);
+}
+.card::before {
+  z-index: 1;
+  background-color: rgba(255, 255, 0, 0.179);
+}
+.card::after {
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.404);
+  transform: translateZ(-20px);
+}
+.card.act {
+  transform: rotateX(60deg) translateZ(50px);
+}
+.card.act::before,
+.card.act::after {
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.404);
+}
+.card.act::before {
+  background-color: rgba(0, 0, 255, 0.213);
+}
+.card.act p {
+  transform: translateZ(30px) scale(1.2);
+}
+.card.act ul li:nth-child(1) {
+  transform: translateZ(200px) rotateZ(-45deg);
+}
+.card.act ul li:nth-child(2) {
+  transform: translateZ(100px) rotateZ(-45deg);
+}
+.card.act ul li:nth-child(2)::before,
+.card.act ul li:nth-child(2)::after {
+  width: 100px;
+}
+.card.act ul li:nth-child(2)::before {
+  content: "10,000";
+  transform: rotateY(-90deg) rotateX(0deg) translateX(-100px);
+}
+.card.act ul li:nth-child(3) {
+  transform: translateZ(150px) rotateZ(-45deg);
+}
+.card.act ul li:nth-child(3)::before,
+.card.act ul li:nth-child(3)::after {
+  width: 150px;
+}
+.card.act ul li:nth-child(3)::before {
+  content: "15,000";
+  transform: rotateY(-90deg) rotateX(0deg) translateX(-150px);
+}
+.card.act ul li:nth-child(4) {
+  transform: translateZ(220px) rotateZ(-45deg);
+}
+.card.act ul li:nth-child(4)::before,
+.card.act ul li:nth-child(4)::after {
+  width: 220px;
+}
+.card.act ul li:nth-child(4)::before {
+  content: "24,000";
+  transform: rotateY(-90deg) rotateX(0deg) translateX(-220px);
+}
+.card.act ul li:nth-child(5) {
+  transform: translateZ(70px) rotateZ(-45deg);
+}
+.card.act ul li:nth-child(5)::before,
+.card.act ul li:nth-child(5)::after {
+  width: 70px;
+}
+.card.act ul li:nth-child(5)::before {
+  content: "7,000";
+  transform: rotateY(-90deg) rotateX(0deg) translateX(-70px);
+}
+.card.act ul li:nth-child(6) {
+  transform: translateZ(70px) rotateZ(-45deg);
+}
+.card.act ul li:nth-child(6)::before,
+.card.act ul li:nth-child(6)::after {
+  width: 70px;
+}
+.card.act ul li:nth-child(6)::before {
+  content: "7,000";
+  transform: rotateY(-90deg) rotateX(0deg) translateX(-70px);
+}
+.card.act ul li:nth-child(7) {
+  transform: translateZ(100px) rotateZ(-45deg);
+}
+.card.act ul li:nth-child(7)::before,
+.card.act ul li:nth-child(7)::after {
+  width: 100px;
+}
+.card.act ul li:nth-child(7)::before {
+  content: "10,000";
+  transform: rotateY(-90deg) rotateX(0deg) translateX(-100px);
+}
+.card ul {
+  transform-style: preserve-3d;
+  transition: inherit;
+  display: flex;
+  z-index: 9;
+}
+.card ul li {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  transform-style: preserve-3d;
+  transform: translateZ(0px) rotateZ(-45deg);
+  text-align: center;
+  transition: inherit;
+  margin: 30px 10px;
+}
+.card ul li::before,
+.card ul li::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 200px;
+  height: 100%;
+  background-image: linear-gradient(to right, #cec8ce, #a0b9cb);
+}
+.card ul li::before {
+  content: "20,000";
+  text-align: end;
+  padding-right: 10px;
+  box-sizing: border-box;
+  transform-origin: left;
+  background-image: linear-gradient(to left, #cec8ce, #a0b9cb);
+  transform: rotateY(-90deg) rotateX(0deg) translateX(-200px);
+}
+.card ul li::after {
+  transform-origin: left top;
+  transform: rotateY(90deg) rotateX(90deg) translateZ(1px);
+}
+/*# sourceMappingURL=./chart.css.map */

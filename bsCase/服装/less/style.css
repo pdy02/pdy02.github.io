@@ -1,0 +1,1058 @@
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  padding: 30px 0;
+  z-index: 1;
+}
+header .row {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0;
+}
+header .row .logo {
+  display: block;
+  min-width: 150px;
+  font-size: 32px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+header .row .logo span {
+  font-weight: 300;
+  font-family: "Poppins", cursive;
+}
+header .row nav {
+  display: flex;
+  justify-content: space-between;
+}
+header .row nav ul {
+  display: flex;
+  text-transform: uppercase;
+}
+header .row nav ul li {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+header .row nav ul li a {
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+header .row nav ul li:hover a {
+  color: red;
+}
+header .row nav ul li.active a {
+  color: red;
+}
+header .row nav form {
+  width: 253px;
+  display: flex;
+  justify-content: space-between;
+}
+header .row nav form input {
+  width: 206px;
+  height: 40.5px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid transparent;
+  padding: 15px;
+}
+header .row nav form a {
+  display: inline-block;
+  width: calc(253px - 206px);
+  height: 40.5px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  line-height: 40.5px;
+  font-size: 16px;
+  border-radius: 0 20px 20px 0;
+}
+header .row .icon {
+  padding: 0;
+  text-align: end;
+}
+header .row .icon a {
+  font-size: 24px;
+  color: #fff;
+}
+header .row .ctrl {
+  display: none;
+  padding: 0;
+}
+header .row .ctrl .bars {
+  margin-left: 10px;
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 10px;
+}
+header .row .ctrl .bars a {
+  font-size: 24px;
+  color: #fff;
+}
+header .row .small {
+  display: none;
+  padding: 20px 15px;
+  background-color: #fff;
+  text-align: center;
+}
+header .row .small ul {
+  text-transform: uppercase;
+}
+header .row .small ul li {
+  padding: 10px 0;
+}
+header .row .small ul li a {
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+header .row .small ul li:hover a {
+  color: red;
+}
+header .row .small ul li.active a {
+  color: red;
+}
+header .row .small form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+header .row .small form input {
+  width: 100%;
+  height: 40.5px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid transparent;
+  padding: 15px;
+  border: 1px solid rgba(128, 128, 128, 0.608);
+}
+header .row .small form a {
+  display: inline-block;
+  width: calc(253px - 206px);
+  height: 40.5px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  line-height: 40.5px;
+  font-size: 16px;
+  border-radius: 0 20px 20px 0;
+}
+header.act {
+  background-color: #fff;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+}
+header.act .row .logo a {
+  color: #060606;
+}
+header.act .row nav form input {
+  border: 1px solid rgba(128, 128, 128, 0.733);
+}
+header.act .row a {
+  color: #060606;
+}
+section.banner {
+  width: 100%;
+  height: 700px;
+  position: relative;
+  z-index: 0;
+}
+section.banner .lop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+section.banner .swiper-next,
+section.banner .swiper-back {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  top: calc(50% - 25px);
+  z-index: 2;
+}
+section.banner .swiper-next {
+  right: 5%;
+}
+section.banner .swiper-back {
+  left: 5%;
+}
+section.banner .swiper {
+  height: 100%;
+}
+section.banner .swiper .slide {
+  display: flex;
+  align-items: center;
+  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+}
+section.banner .swiper .slide:nth-child(1) {
+  background-image: url("../imgs/b1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+section.banner .swiper .slide:nth-child(2) {
+  background-image: url("../imgs/b2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+section.banner .swiper .slide:nth-child(3) {
+  background-image: url("../imgs/b3.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+section.banner .swiper .slide:nth-child(4) {
+  background-image: url("../imgs/b4.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+section.banner .swiper .slide.active {
+  opacity: 1;
+}
+section.banner .swiper .slide .container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+section.banner .swiper .slide .container .info {
+  width: 95%;
+  color: #fff;
+  left: 0;
+}
+section.banner .swiper .slide .container .info p {
+  text-transform: uppercase;
+  width: 150px;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: inline-block;
+  word-wrap: break-word;
+  border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+section.banner .swiper .slide .container .info h2 {
+  text-transform: uppercase;
+  font-size: 60px;
+  font-weight: 700;
+  margin: 20px 0;
+  opacity: 0;
+}
+section.banner .swiper .slide .container .info h2 span {
+  font-weight: 100;
+  font-family: "Poppins", cursive;
+}
+section.banner .swiper .slide .container .info a {
+  display: block;
+  color: #fff;
+  line-height: 50px;
+  font-size: 20px;
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #f54748;
+  transition: background 1s;
+  text-align: center;
+  opacity: 0;
+}
+section.banner .swiper .slide .container .info a:hover {
+  background-color: #f48924;
+}
+section.offering {
+  padding: 50px 0;
+}
+section.offering .row .title {
+  padding: 50px;
+}
+section.offering .row .title h2 {
+  width: 100%;
+  font-size: 44px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 50px;
+}
+section.offering .row .title h2 span {
+  font-family: "Poppins", cursive;
+  font-weight: 300;
+}
+section.offering .row .main div.card {
+  cursor: pointer;
+  margin: 15px 15px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 0;
+}
+section.offering .row .main div.card img {
+  vertical-align: middle;
+  width: 100%;
+}
+section.offering .row .main div.card i {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background-color: #f54748;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: white;
+  opacity: 1;
+  transition: all 0.5s;
+}
+section.offering .row .main div.card .lop {
+  transform: scale(0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #f54747d3;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  color: white;
+  transition: all 0.5s;
+}
+section.offering .row .main div.card .lop div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: 100px;
+  padding: 0 10px;
+}
+section.offering .row .main div.card .lop div h1 {
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+}
+section.offering .row .main div.card .lop div p {
+  line-height: 20px;
+  font-size: 15px;
+}
+section.offering .row .main div.card:hover i {
+  opacity: 0;
+}
+section.offering .row .main div.card:hover .lop {
+  transform: scale(1);
+}
+section.offering .row .main .button {
+  text-align: center;
+}
+section.offering .row .main .button .btn {
+  margin-top: 70px;
+}
+section.offering .row .main .button .btn div {
+  width: 200px;
+  height: 50px;
+  margin: 0 auto;
+  background-color: #f54748;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  line-height: 30px;
+  padding: 10px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 1s;
+}
+section.offering .row .main .button .btn div:hover {
+  background-color: #f48924;
+}
+section.clients {
+  background-color: #fafafb;
+  padding: 100px 0;
+}
+section.clients .row .title {
+  padding: 50px 0;
+}
+section.clients .row .title h2 {
+  width: 100%;
+  font-size: 44px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 50px;
+}
+section.clients .row .title h2 span {
+  font-family: "Poppins", cursive;
+  font-weight: 300;
+}
+section.clients .row div.card {
+  margin: 10px 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+section.clients .row div.card:hover .icon span {
+  color: #00000046;
+}
+section.clients .row div.card div.icon::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+section.clients .row div.card div.icon i {
+  float: left;
+  font-size: 40px;
+  color: #f54748;
+}
+section.clients .row div.card div.icon span {
+  float: right;
+  font-size: 50px;
+  font-weight: 600;
+  color: #0000000f;
+  transition: all 0.5s;
+}
+section.clients .row div.card div.text .title {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #060606;
+  text-decoration: none;
+}
+section.clients .row div.card div.text .title:hover {
+  color: #f54748;
+}
+section.clients .row div.card div.text P {
+  margin: 20px 0;
+  color: gray;
+  line-height: 30px;
+  font-weight: 200;
+}
+section.clients .row div.card div.text a {
+  color: #060606;
+  text-decoration: none;
+}
+section.clients .row div.card div.text a:last-child {
+  display: inline-block;
+  border-bottom: 2px solid #f54748;
+  font-weight: bold;
+  line-height: 30px;
+}
+section.years {
+  padding: 100px 0;
+}
+section.years .row .info {
+  padding-bottom: 50px;
+}
+section.years .row .info h2 {
+  width: 100%;
+  font-size: 44px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 50px;
+}
+section.years .row .info h2 span {
+  font-family: "Poppins", cursive;
+  font-weight: 300;
+}
+section.years .row .info p {
+  font-size: 16px;
+  color: #363636;
+  line-height: 30px;
+  margin: 20px 0;
+}
+section.years .row .info a {
+  padding: 14px 42px;
+  background-color: #f54748;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: bold;
+  transition: all 1s;
+  text-decoration: none;
+  margin-top: 24px;
+}
+section.years .row .info a:hover {
+  background-color: #f48924;
+}
+section.years .row .card {
+  padding: 20px 10px 10px;
+  position: relative;
+  z-index: 0;
+}
+section.years .row .card img {
+  border-radius: 15px;
+}
+section.years .row .card a {
+  display: block;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  top: calc(50% - 27.5px);
+  left: calc(50% - 27.5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+section.years .row .card a .p1,
+section.years .row .card a .p2,
+section.years .row .card a .p3,
+section.years .row .card a .p4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: myanimate 4s infinite;
+}
+section.years .row .card a .p1 {
+  animation-delay: 0s;
+}
+section.years .row .card a .p2 {
+  animation-delay: -1s;
+}
+section.years .row .card a .p3 {
+  animation-delay: -2s;
+}
+section.years .row .card a .p4 {
+  animation-delay: -3s;
+}
+section.years .row .card a i {
+  font-size: 20px;
+  color: #f54748;
+  position: relative;
+  z-index: 1;
+}
+section.years .row .card::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-radius: 15px;
+  border: 10px solid #eeeeee;
+}
+section.design {
+  background-image: url("../imgs/bg1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  height: 270px;
+  padding: 50px;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+}
+section.design .lop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+section.design .row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+section.design .row .info h2 {
+  width: 100%;
+  font-size: 44px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 50px;
+  text-align: left;
+  color: #fff;
+  margin-bottom: 20px;
+}
+section.design .row .info h2 span {
+  font-family: "Poppins", cursive;
+  font-weight: 300;
+}
+section.design .row .info p {
+  color: #fff;
+  line-height: 30px;
+  letter-spacing: 1px;
+}
+section.design .row .btn-item {
+  text-align: end;
+}
+section.design .row .btn-item a.btn {
+  padding: 14px 42px;
+  background-color: #f54748;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: bold;
+  transition: all 1s;
+  text-decoration: none;
+}
+section.design .row .btn-item a.btn:hover {
+  background-color: #f48924;
+}
+section.works .row > div.col-xs-12 {
+  padding: 0;
+}
+section.works .row .left {
+  padding: 50px;
+}
+section.works .row .left .info {
+  padding: 50px;
+}
+section.works .row .left .info h2 {
+  width: 100%;
+  font-size: 44px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 50px;
+  text-align: start;
+}
+section.works .row .left .info h2 span {
+  font-family: "Poppins", cursive;
+  font-weight: 300;
+}
+section.works .row .left .info p {
+  font-size: 16px;
+  color: #363636;
+  line-height: 30px;
+  margin: 20px 0;
+}
+section.works .row .left .info a {
+  padding: 14px 42px;
+  background-color: #f54748;
+  border-radius: 30px;
+  color: #fff;
+  font-weight: bold;
+  transition: all 1s;
+  text-decoration: none;
+  margin-top: 24px;
+}
+section.works .row .left .info a:hover {
+  background-color: #f48924;
+}
+section.works .row .right .picture {
+  min-height: 400px;
+  background-image: url("../imgs/bg2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+section.works .row .item1-picture {
+  min-height: 400px;
+  background-image: url("../imgs/bg3.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #fafafb;
+}
+section.works .row .item2-picture {
+  background-image: url("../imgs/bg4.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 400px;
+  background-color: #fafafb;
+}
+section.works .row .item1-info,
+section.works .row .item2-info {
+  padding: 80px;
+  min-height: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+section.works .row .item1-info i,
+section.works .row .item2-info i {
+  font-size: 36px;
+  color: #f54748;
+}
+section.works .row .item1-info h3,
+section.works .row .item2-info h3 {
+  font-weight: 700;
+  font-size: 24px;
+  margin: 20px 0;
+}
+section.works .row .item1-info p,
+section.works .row .item2-info p {
+  color: #363636;
+  line-height: 25px;
+}
+section.posts {
+  padding: 50px 0;
+}
+section.posts .row .title h2 {
+  width: 100%;
+  font-size: 44px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 50px;
+  padding: 50px 0;
+}
+section.posts .row .title h2 span {
+  font-family: "Poppins", cursive;
+  font-weight: 300;
+}
+section.posts .row .card {
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+section.posts .row .card .bg {
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+}
+section.posts .row .card .bg img {
+  transition: all 0.5s;
+}
+section.posts .row .card .bg .lop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f54747cd;
+  transform: scale(0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+  color: #fff;
+  font-size: 24px;
+}
+section.posts .row .card .main {
+  padding: 15px;
+}
+section.posts .row .card .main .user {
+  display: flex;
+  justify-content: space-between;
+}
+section.posts .row .card .main .user a {
+  text-decoration: none;
+  color: #060606;
+  transition: color 0.2s;
+}
+section.posts .row .card .main .user a:hover {
+  color: #f54748;
+}
+section.posts .row .card .main .user i {
+  color: #f54748;
+}
+section.posts .row .card .main h3 {
+  font-size: 20px;
+  padding: 20px 0;
+}
+section.posts .row .card .main h3 a {
+  font-weight: 900;
+  color: #060606;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+section.posts .row .card .main h3 a:hover {
+  color: #f54748;
+}
+section.posts .row .card .main p {
+  font-size: 16px;
+}
+section.posts .row .card .main > a {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #060606;
+  border-bottom: 2px solid #f54748;
+}
+section.posts .row .card:hover .bg img {
+  transform: scale(1.2);
+}
+section.posts .row .card:hover .bg .lop {
+  transform: scale(1);
+}
+footer {
+  padding: 50px;
+  min-height: 500px;
+  background-image: url("../imgs/footer.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+footer .lop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
+}
+footer .row .list h2 {
+  color: #fff;
+  width: 100%;
+  font-size: 44px;
+  font-weight: 900;
+  text-align: center;
+  line-height: 50px;
+  text-align: left;
+  font-size: 32px;
+}
+footer .row .list h2 span {
+  font-family: "Poppins", cursive;
+  font-weight: 300;
+}
+footer .row .list p {
+  color: #fff;
+  opacity: 0.8;
+  margin-top: 16px;
+  line-height: 28px;
+  letter-spacing: 1px;
+}
+footer .row .list .icon {
+  font-size: 24px;
+  margin-top: 24px;
+}
+footer .row .list .icon a {
+  color: #fff;
+  margin-right: 5px;
+  transition: all 0.3s;
+}
+footer .row .list .icon a:hover {
+  color: #f54748;
+}
+footer .row .middle {
+  display: flex;
+  justify-content: space-between;
+}
+footer .row .middle .item2 ul li:nth-child(1) {
+  height: 52px;
+}
+footer .row .middle .item1,
+footer .row .middle .item2 {
+  width: 50%;
+}
+footer .row .middle .item1 h2,
+footer .row .middle .item2 h2 {
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+footer .row .middle .item1 ul li,
+footer .row .middle .item2 ul li {
+  height: 26px;
+  margin: 10px 0;
+  color: #fff;
+}
+footer .row .middle .item1 ul li a,
+footer .row .middle .item2 ul li a {
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s;
+}
+footer .row .middle .item1 ul li a:hover,
+footer .row .middle .item2 ul li a:hover {
+  color: #f54748;
+}
+footer .row .item3 h2 {
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+footer .row .item3 ul li {
+  color: #fff;
+  display: flex;
+  height: 23px;
+  margin-bottom: 8px;
+  justify-content: space-between;
+}
+footer .row .split {
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+}
+footer .row .bottom p {
+  text-align: center;
+  color: #fff;
+  padding: 50px 0;
+}
+footer .row .bottom p a {
+  color: #fff;
+  transition: all 0.3s;
+}
+footer .row .bottom p a:hover {
+  color: #f54748;
+}
+@keyframes myanimate {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+@media (max-width: 992px) {
+  header .row .nav {
+    display: none;
+  }
+  header .row .ctrl {
+    display: block;
+  }
+  section.clients .row .card-last {
+    margin-left: 25%;
+  }
+  section.posts .row .card-last {
+    margin-left: 25%;
+  }
+  section.design .row .btn-item {
+    margin-top: 30px;
+    text-align: left;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+  section.clients .row .card-last {
+    margin-left: 0px;
+  }
+  section.posts .row .card-last {
+    margin-left: 0px;
+  }
+}
+body.album header.head.act {
+  background-color: #060606;
+  color: #fff;
+}
+body.album header.head.act .logo {
+  color: #fff;
+}
+body.album header.head.act nav ul li a {
+  color: #fff;
+}
+body.album header.head.act .icon a {
+  color: #fff;
+}
+body.album section.offering {
+  background-color: #19211e;
+}
+body.album section.offering .row h2 {
+  color: #fff;
+}
+body.album section.clients {
+  background-color: #131917;
+}
+body.album section.clients .row h2 {
+  color: #fff;
+}
+body.album section.clients .row .card {
+  background-color: #19211e;
+}
+body.album section.clients .row .card:hover .icon span {
+  opacity: 0.5;
+}
+body.album section.clients .row .card .icon span {
+  color: #fdfffc;
+  opacity: 0.1;
+}
+body.album section.clients .row .card .text .title {
+  color: #fff;
+}
+body.album section.clients .row .card .text p {
+  color: #fff;
+  opacity: 0.8;
+}
+body.album section.clients .row .card .text a {
+  color: #fff;
+}
+body.album section.years {
+  background-color: #19211e;
+}
+body.album section.years .row .info {
+  color: #fff;
+}
+body.album section.years .row .info p {
+  color: #fff;
+  opacity: 0.8;
+}
+body.album section.works .row:nth-child(1) {
+  background-color: #131917;
+}
+body.album section.works .row:nth-child(2) {
+  background-color: #19211e;
+}
+body.album section.works .row h2 {
+  color: #fff;
+}
+body.album section.works .row .left .info p {
+  color: #fff;
+  opacity: 0.8;
+}
+body.album section.works .row .item1-info h3,
+body.album section.works .row .item2-info h3 {
+  color: #fff;
+}
+body.album section.works .row .item1-info p,
+body.album section.works .row .item2-info p {
+  color: #fff;
+  opacity: 0.8;
+}
+body.album section.posts {
+  background-color: #131917;
+}
+body.album section.posts .row h2 {
+  color: #fff;
+}
+body.album section.posts .row .card {
+  border: 1px solid rgba(128, 128, 128, 0.422);
+}
+body.album section.posts .row .card .main .user .fl a {
+  color: #fff;
+  opacity: 0.5;
+}
+body.album section.posts .row .card .main .user .fr {
+  color: #fff;
+  opacity: 0.5;
+}
+body.album section.posts .row .card .main h3 a {
+  color: #fff;
+}
+body.album section.posts .row .card .main P {
+  color: #fff;
+  opacity: 0.8;
+}
+body.album section.posts .row .card .main > a {
+  color: #fff;
+}
+/*# sourceMappingURL=./style.css.map */

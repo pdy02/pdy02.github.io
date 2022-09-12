@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <title>简易音乐播放器</title>
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="./less/style.css">
+
+</head>
+
+<body>
+    <!-- 
+        梦回还
+        http://music.163.com/song/media/outer/url?id=405253632.mp3
+
+        斑马斑马
+        http://music.163.com/song/media/outer/url?id=30814948.mp3
+
+        花海
+        本地./audio/hh.flac
+    -->
+
+    <div class="music">
+        <div class="main">
+            <div class="bg">
+                <div class="centerCircle"></div>
+                <img src="./imgs/hh.jpg" alt="">
+            </div>
+            <div class="ctrl">
+                <ul>
+                    <li>
+                        <a href="#" class="backward"><i class="fa fa-fast-backward"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="play"><i class="fa fa-play"></i></a>
+                        <a href="#" class="pause"><i class="fa fa-pause"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" class="forward"><i class="fa fa-fast-forward"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card">
+            <div class="info">
+                <h1>khalid</h1>
+                <p>Location</p>
+            </div>
+        </div>
+    </div>
+    <audio></audio>
+
+    <script>
+        // var playBtn = document.querySelector(".ctrl ul li:nth-child(2)");
+
+        var musicArr = []
+        musicArr.push(new Music("./imgs/hh.jpg", "./audio/hh.flac", "花海", "周杰伦"))
+        musicArr.push(new Music("./imgs/mhh.png", "http://music.163.com/song/media/outer/url?id=405253632.mp3", "梦回还", "哟猫"))
+        musicArr.push(new Music("./imgs/bmbm.jpg", "http://music.163.com/song/media/outer/url?id=30814948.mp3", "斑马斑马", "房东的猫"))
+
+        // 当前第几首
+        var index = 0;
+        $(".ctrl ul li:nth-child(2)>a").click(function () {
+            // console.log($(".music").hasClass("active"));
+            // if ($(".music").hasClass("active")) {
+            //     fnPause()
+            // } else {
+            //     fnplay()
+            // }
+            // $(".music").toggleClass("active")
+            isPlay()
+            // $(".music").toggleClass("active")
+        })
+        function isPlay(){
+            if ($(".music").hasClass("active")) {
+                fnPause()
+            } else {
+                fnplay()
+            }
+        }
+        // 初始化
+        function init(n) {
+            // console.log();
+            // $("audio")[0].src = "./audio/hh.flac"
+            $("audio")[0].src = musicArr[n].url
+            $(".music").find(".bg img")[0].src = musicArr[n].bg
+            $(".music").find(".card h1").text(musicArr[n].title)
+            $(".music").find(".card p").text(musicArr[n].name)
+            $(".bg img").css("animation-play-state", "paused")
+        }
+        init(index)
+
+        // 播放样式
+        function fnplay() {
+            // 播放
+            $("audio")[0].play()
+            $("a.play").css("display", "none").siblings().css("display", "block")
+            // 样式
+            $(".bg img").css("animation-play-state", "running")
+            $(".music").addClass("active")
+        }
+        // 暂停样式
+        function fnPause() {
+            $("audio")[0].pause()
+            $(".bg img").css("animation-play-state", "paused")
+            $("a.pause").css("display", "none").siblings().css("display", "block")
+            $(".music").removeClass("active")
+        }
+
+        // 下一曲
+        function next(){
+            index++
+            if(index >= musicArr.length){
+                index = 0
+            }
+            init(index)
+            // 动画重来/播放音乐
+            $(".bg img").css("animation", "bgRotate 5s infinite linear")
+            // $("audio")[0].play()
+            isPlay()
+            fnplay()
+        }
+        $(".forward").click(function(){
+            /* index++
+            if(index >= musicArr.length){
+                index = 0
+            }
+            init(index)
+            // 动画重来/播放音乐
+            $(".bg img").css("animation", "bgRotate 5s infinite linear")
+            isPlay()
+            fnplay() */
+            next()
+        })
+        // 上一曲
+        $(".backward").click(function(){
+            index--;
+            if(index <= -1){
+                index = musicArr.length-1
+            }
+            init(index)
+            // 动画重来/播放音乐
+            $(".bg img").css("animation", "bgRotate 5s infinite linear")
+            // $("audio")[0].play()
+            isPlay()
+            fnplay()
+        })
+
+        // 循环播放
+        $("audio").on("ended",function(){
+            next()
+        })
+        function Music(bg, url, title, name) {
+            this.bg = bg;
+            this.url = url;
+            this.title = title;
+            this.name = name;
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ插件的使用</title>
+    <!-- jq -->
+    <!-- <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script> -->
+    <script src="./TimePicki-master/TimePicki-master/js/jquery.min.js"></script>
+    <!-- 日期选择 -->
+    <script src="./TimePicki-master/TimePicki-master/js/timepicki.js"></script>
+    <link rel="stylesheet" href="./TimePicki-master/TimePicki-master/css/timepicki.css">
+    <!-- 图片预览 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.5/viewer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.5/viewer.min.js"></script>
+    <!-- 消息提示 -->
+    <script src="./tianyer.js"></script>
+    <!-- 模糊搜索插件 -->
+    <script src="./searchSelect.js"></script>
+    <!-- 轮播图 -->
+    <link rel="stylesheet" href="./swiper-8.3.0/swiper/swiper-bundle.css">
+    <script src="./swiper-8.3.0/swiper/swiper-bundle.js"></script>
+
+
+</head>
+
+<body>
+    <section id="TimePiCi">
+        <h1>日期选择插件</h1>
+        <input type="text" name="timepicker" class="time_element" title="选取日期" />
+    </section>
+    <section id="imglook">
+        <h1>图片浏览插件</h1>
+        点击图片
+        <ul id="images">
+            <li><img src="./imgs/b1.jpg" alt="Picture 1"></li>
+            <li><img src="./imgs/b2.jpg" alt="Picture 2"></li>
+            <li><img src="./imgs/b3.jpg" alt="Picture 3"></li>
+        </ul>
+    </section>
+
+    <section id="tianyer">
+        <h1>消息提示插件</h1>
+        <button type="button">alert提示框</button>
+        <button type="button">confirm确认框</button>
+        <button class="delay">获取验证码</button>
+        <button class="wait">等待页面</button>
+    </section>
+
+    <section id="searchSelect">
+        <h1>模糊搜索插件</h1>
+        <div>
+            <div style="width: 300px;">
+                <h4>点击以下输入查看效果</h4>
+                <div id="search" placeholder="请搜索" name="seaarchSelect"></div>
+            </div>
+        </div>
+    </section>
+    <section id="swiper">
+        <h1>轮播图插件</h1>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="./imgs/b1.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="./imgs/b2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="./imgs/b3.jpg" alt=""></div>
+                <!-- <div class="swiper-slide">Slide 2</div> -->
+                <!-- <div class="swiper-slide">Slide 3</div> -->
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+            <!-- 如果需要滚动条 -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+        </div>
+    </section>
+    <style>
+        /* body {
+            display: flex;
+            flex-wrap: wrap;
+        } */
+        #images img {
+            width: 300px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .swiper {
+            width: 600px;
+            height: 300px;
+        }
+
+        .swiper .swiper-wrapper img {
+            width: 100%;
+        }
+    </style>
+    <script>
+        // 日期预览插件
+        $(document).ready(function () {
+            $(".time_element").timepicki();
+        });
+
+        // 图片预览插件
+        var image = document.getElementById("images")
+        new Viewer(image, {
+            toolbar: {
+                zoomIn: 4,
+                zoomOut: 4,
+                oneToOne: 4,
+                reset: 4,
+                prev: 4,
+                play: {
+                    show: 4,
+                    size: 'large',
+                },
+                next: 4,
+                rotateLeft: 4,
+                rotateRight: 4,
+                flipHorizontal: 4,
+                flipVertical: 4,
+            },
+        });
+    </script>
+
+    <script>
+        // 消息提示插件
+        var vMsg = '我喜欢你',
+            vType = 1,		//四种类型：1标准，2信息，3警告，4错误。
+            vPosition = 7;	//八个位置：1左上，2上中，3右上，
+        //　　　　　4左中， 　　　5右中，
+        //　　　　　6左下，7下中，8右下。
+        //(!vMsg||vMsg==0||vType==0||vPosition==0)
+        tian.alert();		//清全部信息窗口
+
+
+        $("button").eq(0).click(function () {
+            tian.alert(vMsg, vType, vPosition)
+        })
+
+        $("button").eq(1).click(function () {
+            tian.confirm({
+                type: 1,
+                title: "你喜欢我?",
+                content: "真的吗?",
+                // autoClose:1000, // 自动关闭时间
+                onClickYes: function () {
+                    // 点击确定函数
+                    tian.alert("谢谢你!", 1, 7)
+                },
+                onClickNo: () => {
+                    tian.alert("没关系!", 3, 2)
+                },
+                onClose: () => {
+                    // 对话框关闭执行
+                    tian.alert("抱歉,选择真的是件难事", 3, 7)
+                },
+                buttonText: {
+                    Yes: "是的",
+                    No: "不喜欢"
+                }
+            })
+        })
+
+        // 验证码
+        $(".delay").click(function () {
+            tian.delay($(this), 60)
+        })
+
+        //可以按ESC键取消
+        var vCssStyle = {
+            background: '#0f0f0f',	//背景颜色
+            color: '#008000',		//字符颜色
+            type: false,			//字符是否翻转
+            fontsize: 18,			//字号
+            speed: 70,				//下落速度
+            str: 'abcdefghigklmnopqrstuvwxyz'//显示的字符内容
+        };
+
+        $(".wait").click(function () {
+            tian.wait(vCssStyle)
+        })
+    </script>
+
+
+    <script>
+        const search = new searchSelect('#search', [], function () {
+            console.log('这里可以进行异步请求')
+        })
+        search.search(true)
+        setTimeout(() => {
+            search.update([{ id: 1, value: 'a许嵩' }, { id: 2, value: 'b周杰伦' }, { id: 3, value: 'c林俊杰' }, { id: 4, value: 'd白雪皑皑' }, { id: 5, value: 'e想入非非' }, { id: 6, value: 'f得意洋洋' }, { id: 7, value: 'g怒气冲冲' }, { id: 8, value: 'h生机勃勃' }, { id: 9, value: 'i议论纷纷' }, { id: 10, value: 'j大名鼎鼎' }, { id: 11, value: 'k目光炯炯' }, { id: 12, value: 'l波光粼粼' }, { id: 13, value: 'm文质彬彬' }, { id: 14, value: 'n气喘吁吁' }, { id: 15, value: 'o言之凿凿' }, { id: 16, value: 'p人才济济' }, { id: 17, value: 'q热气腾腾' }, { id: 18, value: 'r风尘仆仆' }, { id: 20, value: 's白发苍苍' }, { id: 21, value: 't含情脉脉' }, { id: 22, value: 'u饥肠辘辘' }, { id: 23, value: 'v兴致勃勃' }, { id: 24, value: 'w微波粼粼' }, { id: 25, value: 's野心勃勃' }, { id: 26, value: 'y仪表堂堂' }, { id: 27, value: 'z衣冠楚楚' }])
+            search.assignment(1)
+        }, 1500)
+        setTimeout(() => {
+            // disabled方法 true启动false关闭
+            search.disabled(true)
+            setTimeout(() => {
+                search.disabled(false)
+                // 清空数据
+                search.empty()
+            }, 2000)
+        }, 10000)
+    </script>
+
+
+    <!-- 轮播图插件  -->
+    <script>
+        var mySwiper = new Swiper('.swiper', {
+            // direction: 'vertical', // 垂直切换选项
+            loop: true, // 循环模式选项
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // 如果需要滚动条
+            // scrollbar: {
+            //     el: '.swiper-scrollbar',
+            // },
+            autoplay: {
+                delay: 1500,
+                stopOnLastSlide: false,
+                disableOnInteraction: true,
+            }
+        })        
+    </script>
+</body>
+
+</html>

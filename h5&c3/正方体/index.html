@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d正方体</title>
+</head>
+
+<body>
+    <div class="box">
+        <div class="b1"></div>
+        <div class="b2"></div>
+        <div class="b3"></div>
+        <div class="b4"></div>
+        <div class="b5"></div>
+        <div class="b6"></div>
+    </div>
+
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* 元素距离视图的距离 */
+            perspective: 500px;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform: rotateX(330deg) rotateY(45deg);
+            animation: myrotate 5s infinite linear;
+
+            /* 为子元素 开启3d */
+            transform-style: preserve-3d;
+        }
+
+        .box>div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .box .b1 {
+            background-color: lightblue;
+            background-image: url("img/1.jpg");
+            transform: translateZ(100px);
+        }
+
+        .box .b2 {
+            background-color: lightcoral;
+            transform: rotateY(180deg) translateZ(100px);
+            background-image: url("img/2.png");
+        }
+
+        .box .b3 {
+            background-color: lightgreen;
+            transform: rotateY(-90deg) translateZ(100px);
+            background-image: url("img/03.png");
+        }
+
+        .box .b4 {
+            background-color: lightpink;
+            transform: rotateY(90deg) translateZ(100px);
+            background-image: url("img/4.png");
+        }
+
+        .box .b5 {
+            background-color: lightgrey;
+            transform: rotateX(90deg) translateZ(100px);
+            background-image: url("img/5.png");
+        }
+
+        .box .b6 {
+            background-color: lightseagreen;
+            transform: rotateX(-90deg) translateZ(100px);
+            background-image: url("img/4.png");
+        }
+
+        @keyframes myrotate {
+            0% {
+                transform: rotateX(0deg) rotateY(45deg);
+            }
+            100%{
+            transform: rotateX(360deg) rotateY(405deg);
+            }
+        }
+    </style>
+</body>
+
+</html>

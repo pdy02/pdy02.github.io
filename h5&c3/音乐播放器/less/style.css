@@ -1,0 +1,127 @@
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: #323232;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.music {
+  width: 400px;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 20px;
+  position: relative;
+  z-index: 0;
+}
+.music .main {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+.music .main .bg {
+  width: 110px;
+  height: 110px;
+  position: relative;
+  margin-top: -60px;
+  margin-left: 20px;
+  transition: all 0.3s;
+}
+.music .main .bg .centerCircle {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 10px);
+  left: calc(50% - 10px);
+  z-index: 10;
+}
+.music .main .bg img {
+  border-radius: 50%;
+  animation: bgRotate 5s infinite linear;
+}
+.music .main .ctrl {
+  width: 240px;
+}
+.music .main .ctrl ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.music .main .ctrl ul li a {
+  color: #d7dce2;
+  font-size: 36px;
+  display: block;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+.music .main .ctrl ul li a i {
+  line-height: 70px;
+}
+.music .main .ctrl ul li a:hover {
+  background-color: #d7dce2;
+  color: #fff;
+}
+.music .main .ctrl ul li a.pause {
+  display: none;
+}
+.music .card {
+  width: 380px;
+  height: 100px;
+  background-color: #d4e9f8;
+  border-radius: 20px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  z-index: -1;
+  transition: all 0.3s;
+}
+.music .card .info h1 {
+  margin: 0;
+  font-size: 16px;
+}
+.music .card .info p {
+  margin: 0;
+  font-size: 12px;
+}
+.music.active .main .bg {
+  margin-top: -70px;
+}
+.music.active .main .bg img {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+.music.active .card {
+  top: -50px;
+}
+@keyframes bgRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*# sourceMappingURL=./style.css.map */
